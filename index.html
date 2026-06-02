@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>LAVO Portals</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+ <style>
+  :root {
+   --bg-color: #f8fafc;
+   --surface-color: rgba(255, 255, 255, 0.9);
+   --border-color: rgba(37, 99, 235, 0.2);
+   --accent-glow: #2563eb;
+   --text-primary: #1e3a8a;
+   --text-secondary: #475569;
+   --card-hover: rgba(37, 99, 235, 0.05);
+  }
+
+  * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+  }
+
+  body {
+   font-family: 'Outfit', sans-serif;
+   background-color: var(--bg-color);
+   color: var(--text-primary);
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   overflow-x: hidden;
+   position: relative;
+  }
+
+  /* Animated Background Gradients */
+  .bg-glow {
+   position: fixed;
+   width: 60vw;
+   height: 60vw;
+   background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+   opacity: 0.08;
+   top: -20%;
+   left: -10%;
+   border-radius: 50%;
+   filter: blur(80px);
+   animation: float 15s ease-in-out infinite alternate;
+   z-index: 0;
+  }
+
+  .bg-glow-2 {
+   position: fixed;
+   width: 50vw;
+   height: 50vw;
+   background: radial-gradient(circle, #60a5fa 0%, transparent 70%);
+   opacity: 0.1;
+   bottom: -20%;
+   right: -10%;
+   border-radius: 50%;
+   filter: blur(80px);
+   animation: float 20s ease-in-out infinite alternate-reverse;
+   z-index: 0;
+  }
+
+  @keyframes float {
+   0% { transform: translate(0, 0) scale(1); }
+   100% { transform: translate(5%, 5%) scale(1.1); }
+  }
+
+  .container {
+   position: relative;
+   z-index: 10;
+   max-width: 1200px;
+   padding: 3rem 2rem 5rem;
+   width: 100%;
+   margin: auto;
+  }
+
+  /* ── Header ── */
+  .header {
+   text-align: center;
+   margin-bottom: 1rem;
+  }
+
+  h1 {
+   font-size: 4rem;
+   font-weight: 700;
+   margin-bottom: 0.5rem;
+   background: linear-gradient(to right, #1e3a8a, #2563eb);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   letter-spacing: -1px;
+   animation: fadeUp 1s ease-out;
+  }
+
+  p.subtitle {
+   font-size: 1.2rem;
+   color: var(--text-secondary);
+   font-weight: 300;
+   animation: fadeUp 1s ease-out 0.2s backwards;
+  }
+
+  /* ── Mobile notice ── */
+  .mobile-notice {
+   display: none;
+   text-align: center;
+   font-size: 0.82rem;
+   color: #94a3b8;
+   margin-top: 0.6rem;
+   font-weight: 300;
+   animation: fadeUp 1s ease-out 0.25s backwards;
+  }
+
+  @media (max-width: 768px) {
+   .mobile-notice { display: block; }
+  }
+
+  /* ── Section Labels ── */
+  .section {
+   margin-top: 4rem;
+  }
+
+  .section:first-of-type {
+   margin-top: 2.5rem;
+  }
+
+  .section-label {
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+   margin-bottom: 2rem;
+   animation: fadeUp 1s ease-out backwards;
+  }
+
+  .section-label::after {
+   content: '';
+   flex: 1;
+   height: 1px;
+   background: linear-gradient(to right, var(--border-color), transparent);
+  }
+
+  .section-label .badge {
+   background: var(--accent-glow);
+   color: #fff;
+   padding: 0.3rem 1rem;
+   border-radius: 20px;
+   font-size: 0.85rem;
+   font-weight: 500;
+   letter-spacing: 0.5px;
+   text-transform: uppercase;
+  }
+
+  .section-label .title {
+   font-size: 1.6rem;
+   font-weight: 500;
+   color: var(--text-primary);
+   white-space: nowrap;
+  }
+
+  /* ── Section 1: Demo (3-column grid) ── */
+  .demo-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   gap: 2rem;
+   perspective: 1000px;
+  }
+
+  .demo-card {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: var(--surface-color);
+   backdrop-filter: blur(16px);
+   -webkit-backdrop-filter: blur(16px);
+   border: 1px solid var(--border-color);
+   border-radius: 24px;
+   padding: 3rem 2rem;
+   text-decoration: none;
+   color: var(--text-primary);
+   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+   position: relative;
+   overflow: hidden;
+   box-shadow: 0 10px 30px rgba(37, 99, 235, 0.05);
+   min-height: 220px;
+   animation: fadeUp 1s ease-out 0.3s backwards;
+  }
+
+  .demo-card::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: linear-gradient(135deg, rgba(37,99,235,0.08) 0%, transparent 100%);
+   opacity: 0;
+   transition: opacity 0.4s ease;
+  }
+
+  .demo-card:hover {
+   transform: translateY(-6px) scale(1.01);
+   border-color: #2563eb;
+   box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15), 0 0 20px rgba(37, 99, 235, 0.1);
+  }
+
+  .demo-card:hover::before {
+   opacity: 1;
+  }
+
+  .demo-card-inner {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 1.2rem;
+   z-index: 1;
+  }
+
+  .demo-icon {
+   width: 90px;
+   height: 90px;
+   border-radius: 50%;
+   background: rgba(37, 99, 235, 0.08);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border: 1px solid rgba(37, 99, 235, 0.15);
+   transition: all 0.4s ease;
+  }
+
+  .demo-card:hover .demo-icon {
+   transform: scale(1.1) rotate(5deg);
+   background: rgba(37, 99, 235, 0.15);
+   border-color: rgba(37, 99, 235, 0.4);
+  }
+
+  .demo-card h2 {
+   font-size: 2rem;
+   font-weight: 500;
+  }
+
+  .demo-card p {
+   color: var(--text-secondary);
+   font-size: 1.05rem;
+   font-weight: 300;
+   max-width: 400px;
+   text-align: center;
+   line-height: 1.5;
+  }
+
+  .demo-tag {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.4rem;
+   background: #ecfdf5;
+   color: #065f46;
+   padding: 0.25rem 0.9rem;
+   border-radius: 14px;
+   font-size: 0.8rem;
+   font-weight: 500;
+  }
+
+  .demo-tag .dot {
+   width: 7px;
+   height: 7px;
+   border-radius: 50%;
+   background: #10b981;
+  }
+
+  /* ── Section 2: Wireframe (3 cards) ── */
+  .cards-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   gap: 2rem;
+   perspective: 1000px;
+  }
+
+  .card {
+   background: var(--surface-color);
+   backdrop-filter: blur(16px);
+   -webkit-backdrop-filter: blur(16px);
+   border: 1px solid var(--border-color);
+   border-radius: 24px;
+   padding: 3rem 2rem;
+   text-decoration: none;
+   color: var(--text-primary);
+   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   animation: fadeUp 1s ease-out backwards;
+   position: relative;
+   overflow: hidden;
+   box-shadow: 0 10px 30px rgba(37, 99, 235, 0.05);
+  }
+
+  .card::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: linear-gradient(135deg, rgba(37,99,235,0.05) 0%, transparent 100%);
+   opacity: 0;
+   transition: opacity 0.4s ease;
+  }
+
+  .card:hover {
+   transform: translateY(-10px) scale(1.02);
+   border-color: #2563eb;
+   box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15), 0 0 20px rgba(37, 99, 235, 0.1);
+  }
+
+  .card:hover::before {
+   opacity: 1;
+  }
+
+  .card:nth-child(1) { animation-delay: 0.4s; }
+  .card:nth-child(2) { animation-delay: 0.5s; }
+  .card:nth-child(3) { animation-delay: 0.6s; }
+
+  .icon-container {
+   width: 80px;
+   height: 80px;
+   border-radius: 50%;
+   background: rgba(255, 255, 255, 0.05);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 1.5rem;
+   border: 1px solid rgba(255, 255, 255, 0.1);
+   transition: transform 0.4s ease;
+  }
+
+  .card:hover .icon-container {
+   transform: scale(1.1) rotate(5deg);
+   background: rgba(37, 99, 235, 0.08);
+   border-color: rgba(37, 99, 235, 0.4);
+  }
+
+  .card h2 {
+   font-size: 1.8rem;
+   margin-bottom: 0.5rem;
+   font-weight: 500;
+  }
+
+  .card p {
+   color: var(--text-secondary);
+   font-size: 1rem;
+   line-height: 1.5;
+   font-weight: 300;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+   from {
+    opacity: 0;
+    transform: translateY(30px);
+   }
+   to {
+    opacity: 1;
+    transform: translateY(0);
+   }
+  }
+
+  /* SVG Icons */
+  svg {
+   width: 40px;
+   height: 40px;
+   stroke: var(--text-primary);
+   fill: none;
+   stroke-width: 1.5;
+   transition: stroke 0.3s ease;
+  }
+
+  .card:hover svg {
+   stroke: #2563eb;
+  }
+
+  .demo-card:hover svg {
+   stroke: #2563eb;
+  }
+
+  /* ── Placeholder card (Coming Soon) ── */
+  .demo-card.placeholder {
+   cursor: default;
+   opacity: 0.35;
+   pointer-events: none;
+   border-style: dashed;
+  }
+
+  .placeholder-tag {
+   background: #f1f5f9 !important;
+   color: #94a3b8 !important;
+  }
+
+  .placeholder-tag .dot {
+   background: #cbd5e1 !important;
+  }
+
+  /* ── Theme Switcher ── */
+  .theme-switcher {
+   position: fixed;
+   bottom: 24px;
+   right: 24px;
+   z-index: 9999;
+   background: rgba(255,255,255,0.85);
+   backdrop-filter: blur(12px);
+   -webkit-backdrop-filter: blur(12px);
+   border: 1px solid rgba(37,99,235,0.15);
+   border-radius: 28px;
+   padding: 8px 12px;
+   display: flex;
+   gap: 8px;
+   box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+
+  .theme-swatch {
+   display: inline-block;
+   width: 26px;
+   height: 26px;
+   border-radius: 50%;
+   border: 2px solid #cbd5e1;
+   cursor: pointer;
+   transition: all 0.2s ease;
+   flex-shrink: 0;
+  }
+
+  .theme-swatch:hover {
+   transform: scale(1.2);
+   border-color: #2563eb;
+   box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+  }
+
+  .theme-swatch.active {
+   border-color: #1e3a8a;
+   box-shadow: 0 0 0 3px rgba(30,58,138,0.35);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+   h1 { font-size: 3rem; }
+   .cards-grid { grid-template-columns: 1fr; }
+   .demo-grid { grid-template-columns: 1fr; }
+   .section-label {
+    flex-wrap: wrap;
+   }
+   .section-label .title {
+    font-size: 1.3rem;
+   }
+  }
+ </style>
+</head>
+<body>
+ <div class="bg-glow"></div>
+ <div class="bg-glow-2"></div>
+
+ <div class="container">
+  <!-- Header -->
+  <div class="header">
+   <h1>LAVO Portals</h1>
+   <p class="subtitle">Select a destination to continue</p>
+   <p class="mobile-notice">Giao diện mobile đang được điều chỉnh — vui lòng xem trên desktop để có trải nghiệm tốt nhất</p>
+  </div>
+
+  <!-- ═══ SECTION 1: DEMO WEB ═══ -->
+  <div class="section">
+   <div class="section-label">
+    <span class="badge">Section 1</span>
+    <span class="title">Demo Web</span>
+   </div>
+
+   <div class="demo-grid">
+    <a href="lavo-home/index.html" class="demo-card">
+     <div class="demo-card-inner">
+      <div class="demo-icon">
+       <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="16 18 22 12 16 6"></polyline>
+        <polyline points="8 6 2 12 8 18"></polyline>
+        <line x1="12" y1="2" x2="12" y2="22"></line>
+       </svg>
+      </div>
+      <h2>LAVO Home</h2>
+      <p>Full landing page demo — hero, brands, solutions, training, ecosystem, and more.</p>
+      <span class="demo-tag"><span class="dot"></span> Live Demo</span>
+     </div>
+    </a>
+    <div class="demo-card placeholder">
+     <div class="demo-card-inner">
+      <div class="demo-icon">
+       <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+       </svg>
+      </div>
+      <h2>E-Commerce</h2>
+      <p>Online store, product catalog, and shopping experience.</p>
+      <span class="demo-tag placeholder-tag">Coming Soon</span>
+     </div>
+    </div>
+    <div class="demo-card placeholder">
+     <div class="demo-card-inner">
+      <div class="demo-icon">
+       <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+       </svg>
+      </div>
+      <h2>ODM</h2>
+      <p>Original Design Manufacturing and factory solutions.</p>
+      <span class="demo-tag placeholder-tag">Coming Soon</span>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <!-- ═══ SECTION 2: WIREFRAME ═══ -->
+  <div class="section">
+   <div class="section-label">
+    <span class="badge">Section 2</span>
+    <span class="title">Wireframe</span>
+   </div>
+
+   <div class="cards-grid">
+    <!-- Corp Portal -->
+    <a href="corp/index.html" class="card">
+     <div class="icon-container">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+       <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+       <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+     </div>
+     <h2>Corporate</h2>
+     <p>Main company portal and general information.</p>
+    </a>
+
+    <!-- Ecom Portal -->
+    <a href="ecom/index.html" class="card">
+     <div class="icon-container">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+       <circle cx="9" cy="21" r="1"></circle>
+       <circle cx="20" cy="21" r="1"></circle>
+       <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      </svg>
+     </div>
+     <h2>E-Commerce</h2>
+     <p>Online store, product catalog, and shopping.</p>
+    </a>
+
+    <!-- ODM Portal -->
+    <a href="odm/index.html" class="card">
+     <div class="icon-container">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+       <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+       <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+      </svg>
+     </div>
+     <h2>ODM</h2>
+     <p>Original Design Manufacturing and factory solutions.</p>
+    </a>
+   </div>
+  </div>
+ </div>
+
+ <!-- ── Theme Switcher ── -->
+ <div class="theme-switcher" id="themeSwitcher" style="background:#fff;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.1)">
+  <span class="theme-swatch active" data-bg="#F8FAFC" style="background:#F8FAFC;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.12)" title="Default"></span>
+  <span class="theme-swatch" data-bg="#EFEEF2" style="background:#EFEEF2;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.12)" title="#EFEEF2"></span>
+  <span class="theme-swatch" data-bg="#F0F2F4" style="background:#F0F2F4;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.12)" title="#F0F2F4"></span>
+  <span class="theme-swatch" data-bg="#F5F5F5" style="background:#F5F5F5;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.12)" title="#F5F5F5"></span>
+  <span class="theme-swatch" data-bg="#E5E5E5" style="background:#E5E5E5;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.12)" title="#E5E5E5"></span>
+ </div>
+
+ <script>
+ document.querySelectorAll('.theme-swatch').forEach(el => {
+  el.addEventListener('click', function() {
+   document.querySelectorAll('.theme-swatch').forEach(s => s.classList.remove('active'));
+   this.classList.add('active');
+   document.body.style.backgroundColor = this.dataset.bg;
+  });
+ });
+ </script>
+</body>
+</html>

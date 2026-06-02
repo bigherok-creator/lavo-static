@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAVO - Định Hình Tương Lai Ngành Tóc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind-config.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-[#0b162c] text-white py-4 px-[6.25vw] flex justify-between items-center w-full sticky top-0 z-50">
+        <div class="flex items-center">
+            <img src="cta-logo.png" alt="LAVO Logo" class="h-8 object-contain" style="filter: brightness(0) invert(1);">
+        </div>
+        <nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide items-center">
+            <a href="#" class="hover:text-gray-300 transition">Công ty</a>
+            <a href="#" class="hover:text-gray-300 transition flex items-center">
+                <span class="bg-white text-[#0b162c] rounded-full w-4 h-4 flex items-center justify-center mr-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </span>
+                Thương hiệu
+            </a>
+            <a href="#" class="hover:text-gray-300 transition">Kiến thức</a>
+            <a href="#" class="hover:text-gray-300 transition">Hệ sinh thái</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-lavo-dark text-white flex items-center bg-cover bg-right min-h-[500px]" style="background-image: url('hero-bg.png');">
+        <!-- Subtle dark gradient on the left to ensure text is readable against the background -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0A1734] via-[#0A1734]/80 to-transparent opacity-90 w-2/3"></div>
+        <div class="container mx-auto px-8 relative z-10">
+            <div class="max-w-3xl">
+                <p class="text-xl md:text-[30px] font-heading font-medium uppercase mb-2 tracking-wide" data-animate="hero-subtitle" data-animate-load data-delay="0">Kiến tạo đẳng cấp</p>
+                <h1 class="text-4xl md:text-[53px] font-heading font-bold mb-12 leading-[1.3] tracking-tight" data-animate="hero-title" data-animate-load data-delay="0.2">ĐỊNH HÌNH TƯƠNG LAI<br>NGÀNH TÓC</h1>
+                <p class="text-xs md:text-[26px] font-heading font-normal mb-6 leading-snug" data-animate="hero-subtitle" data-animate-load data-delay="0.5">Lavo không chỉ là thương hiệu<br>mỹ phẩm tóc</p>
+                <p class="text-sm md:text-[15px] font-body font-light text-gray-200 leading-relaxed max-w-[650px]" data-animate="hero-body" data-animate-load data-delay="0.8">Chúng tôi xây dựng một nền tảng toàn diện, nơi giải pháp &ndash; kiến thức &ndash;<br>công nghệ hội tụ. Đồng hành cùng salon và nhà tạo mẫu trên hành<br>trình phát triển chuyên nghiệp.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats / Intro Cards -->
+    <section class="pt-6 pb-12 relative z-20">
+        <div class="container mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-animate="stagger">
+                <!-- Card 1 -->
+                <div class="relative bg-white aspect-[2/1] md:aspect-[21/9] lg:aspect-[24/9] rounded-sm overflow-hidden border border-gray-100">
+                    <div class="absolute inset-0 bg-cover bg-right bg-no-repeat" style="background-image: url('rect1.png');"></div>
+                    <div class="absolute inset-y-0 left-0 flex flex-col justify-center px-8 md:px-12 z-10">
+                        <h3 class="text-[32px] md:text-[43px] lg:text-[54px] font-heading font-light text-lavo-blue leading-none mb-0" data-animate="count-up" data-target="500" data-suffix="+">500+</h3>
+                        <p class="text-lg md:text-xl text-lavo-blue font-heading font-light">salon</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="relative bg-white aspect-[2/1] md:aspect-[21/9] lg:aspect-[24/9] rounded-sm overflow-hidden border border-gray-100">
+                    <div class="absolute inset-0 bg-cover bg-right bg-no-repeat" style="background-image: url('rect2.png');"></div>
+                    <div class="absolute inset-y-0 left-0 flex flex-col justify-center px-8 md:px-12 z-10">
+                        <h3 class="text-[32px] md:text-[43px] lg:text-[54px] font-heading font-light text-lavo-blue leading-none mb-0" data-animate="count-up" data-target="200" data-suffix="+">200+</h3>
+                        <p class="text-lg md:text-xl text-lavo-blue font-heading font-light">chuyên gia</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="relative bg-white aspect-[2/1] md:aspect-[21/9] lg:aspect-[24/9] rounded-sm overflow-hidden border border-gray-100">
+                    <div class="absolute inset-0 bg-cover bg-right bg-no-repeat" style="background-image: url('rect3.png');"></div>
+                    <div class="absolute inset-y-0 left-0 flex flex-col justify-center px-8 md:px-12 z-10">
+                        <h3 class="text-[32px] md:text-[43px] lg:text-[54px] font-heading font-light text-lavo-blue leading-none mb-0" data-animate="count-up" data-target="15" data-suffix="+">15+</h3>
+                        <p class="text-lg md:text-xl text-lavo-blue font-heading font-light">năm kinh nghiệm</p>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="relative bg-white aspect-[2/1] md:aspect-[21/9] lg:aspect-[24/9] rounded-sm overflow-hidden border border-gray-100">
+                    <div class="absolute inset-0 bg-cover bg-right bg-no-repeat" style="background-image: url('rect4.png');"></div>
+                    <div class="absolute inset-y-0 left-0 flex flex-col justify-center px-8 md:px-12 z-10">
+                        <h3 class="text-[32px] md:text-[43px] lg:text-[54px] font-heading font-light text-lavo-blue leading-none mb-0" data-animate="count-up" data-target="2000" data-suffix="+">2000+</h3>
+                        <p class="text-lg md:text-xl text-lavo-blue font-heading font-light">sản phẩm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-8">
+            <div class="text-center mb-16">
+                <h4 class="text-lavo-blue font-heading font-bold uppercase tracking-widest mb-4" data-animate="fade-up">VỀ LAVO</h4>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-light text-lavo-blue mb-6" data-animate="fade-up" data-delay="1">PLATFORM TOÀN DIỆN CHO NGÀNH TÓC VIỆT</h2>
+                <p class="text-gray-500 font-body" data-animate="fade-up" data-delay="2">LAVO cung cấp giải pháp toàn diện từ sản phẩm, đào tạo, kiến thức đến hệ sinh thái salon &ndash; giúp bạn phát triển bền vững trong ngành tóc chuyên nghiệp.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left" data-animate="stagger">
+                <!-- Card 1 -->
+                <div class="border border-lavo-blue rounded-xl overflow-hidden flex flex-col bg-white">
+                    <div class="h-44 w-full bg-cover bg-center" style="background-image: url('card1.png');"></div>
+                    <div class="p-6 lg:p-8 flex-1 flex flex-col">
+                        <div class="flex items-center mb-4">
+                            <div class="w-14 h-14 rounded-lg bg-lavo-blue text-white flex items-center justify-center shrink-0">
+                                <!-- Icon Placeholder (Flask/Science) -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-heading font-bold text-lavo-blue ml-4 leading-tight uppercase">Sản phẩm<br>chuyên biệt</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm font-body leading-relaxed">Phát triển dựa trên nền tảng nghiên cứu và công thức của đội ngũ R&D giàu kinh nghiệm. Mang đến sản phẩm an toàn, hiệu quả và đồng nhất trên từng mái tóc.</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="border border-lavo-blue rounded-xl overflow-hidden flex flex-col bg-white">
+                    <div class="h-44 w-full bg-cover bg-center" style="background-image: url('card2.png');"></div>
+                    <div class="p-6 lg:p-8 flex-1 flex flex-col">
+                        <div class="flex items-center mb-4">
+                            <div class="w-14 h-14 rounded-lg bg-lavo-blue text-white flex items-center justify-center shrink-0">
+                                <!-- Icon Placeholder (Book/Knowledge) -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-heading font-bold text-lavo-blue ml-4 leading-tight uppercase">Kiến thức<br>& Đào tạo</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm font-body leading-relaxed">Hệ thống đào tạo chuyên sâu kết hợp workshop thực tiễn, giúp nhà tạo mẫu cập nhật kỹ thuật, nâng cao tay nghề và làm chủ xu hướng</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="border border-lavo-blue rounded-xl overflow-hidden flex flex-col bg-white">
+                    <div class="h-44 w-full bg-cover bg-center" style="background-image: url('card3.png');"></div>
+                    <div class="p-6 lg:p-8 flex-1 flex flex-col">
+                        <div class="flex items-center mb-4">
+                            <div class="w-14 h-14 rounded-lg bg-lavo-blue text-white flex items-center justify-center shrink-0">
+                                <!-- Icon Placeholder (Network/Ecosystem) -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-heading font-bold text-lavo-blue ml-4 leading-tight uppercase">Hệ sinh thái<br>Salon</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm font-body leading-relaxed">Kết nối và hỗ trợ salon phát triển thông qua giải pháp vận hành, marketing và tiếp cận khách hàng &ndash; hướng đến sự tăng trưởng bền vững.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="py-12 relative">
+        <div class="container mx-auto px-8">
+            <div class="text-center max-w-4xl mx-auto mb-16">
+                <h4 class="text-lavo-blue font-heading font-bold uppercase tracking-widest mb-4">VỀ THƯƠNG HIỆU</h4>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-light text-lavo-blue mb-6">HỆ SINH THÁI THƯƠNG HIỆU LAVO</h2>
+                <p class="text-gray-500 font-body"><span class="inline-block">Mỗi thương hiệu được xây dựng với định hướng riêng biệt, cùng góp phần hoàn thiện</span> <span class="inline-block">bức tranh toàn diện của ngành tóc chuyên nghiệp.</span></p>
+            </div>
+            
+            <div class="relative flex items-center justify-center w-full">
+                <!-- Left Arrow -->
+                <button class="absolute left-0 z-10 w-10 h-10 bg-[#1e3b8b] text-white rounded-full flex items-center justify-center shadow hover:bg-blue-900 transition -ml-4 md:-ml-8 lg:-ml-12 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                
+                <!-- Carousel Track / Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 w-full px-8 md:px-0">
+                    <!-- Brand 1: Lavox -->
+                    <div class="flex flex-col items-center group">
+                        <div class="h-56 md:h-64 lg:h-72 w-full flex items-center justify-center mb-4 relative">
+                            <!-- Product Image -->
+                            <img src="product1.png" alt="Lavox Product" class="max-h-full object-contain transition duration-300 transform group-hover:scale-105">
+                        </div>
+                        <div class="h-12 md:h-16 flex items-center justify-center">
+                            <!-- Logo Image -->
+                            <img src="logo1.png" alt="Lavox Logo" class="max-h-[75%] max-w-[75%] object-contain">
+                        </div>
+                    </div>
+                    
+                    <!-- Brand 2: x-pros -->
+                    <div class="flex flex-col items-center group">
+                        <div class="h-56 md:h-64 lg:h-72 w-full flex items-center justify-center mb-4 relative">
+                            <!-- Product Image -->
+                            <img src="product2.png" alt="x-pros Product" class="max-h-full object-contain transition duration-300 transform group-hover:scale-105">
+                        </div>
+                        <div class="h-12 md:h-16 flex items-center justify-center">
+                            <!-- Logo Image -->
+                            <img src="logo2.png" alt="x-pros Logo" class="max-h-[75%] max-w-[75%] object-contain">
+                        </div>
+                    </div>
+                    
+                    <!-- Brand 3: m-pros -->
+                    <div class="flex flex-col items-center group">
+                        <div class="h-56 md:h-64 lg:h-72 w-full flex items-center justify-center mb-4 relative">
+                            <!-- Product Image -->
+                            <img src="product3.png" alt="m-pros Product" class="max-h-full object-contain transition duration-300 transform group-hover:scale-105">
+                        </div>
+                        <div class="h-12 md:h-16 flex items-center justify-center">
+                            <!-- Logo Image -->
+                            <img src="logo3.png" alt="m-pros Logo" class="max-h-[75%] max-w-[75%] object-contain">
+                        </div>
+                    </div>
+                    
+                    <!-- Brand 4: Bostain -->
+                    <div class="flex flex-col items-center group">
+                        <div class="h-56 md:h-64 lg:h-72 w-full flex items-center justify-center mb-4 relative">
+                            <!-- Product Image -->
+                            <img src="product4.png" alt="Bostain Product" class="max-h-full object-contain transition duration-300 transform group-hover:scale-105">
+                        </div>
+                        <div class="h-12 md:h-16 flex items-center justify-center">
+                            <!-- Logo Image -->
+                            <img src="logo4.png" alt="Bostain Logo" class="max-h-[75%] max-w-[75%] object-contain">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Arrow -->
+                <button class="absolute right-0 z-10 w-10 h-10 bg-[#1e3b8b] text-white rounded-full flex items-center justify-center shadow hover:bg-blue-900 transition -mr-4 md:-mr-8 lg:-mr-12 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="py-12 relative">
+        <div class="container mx-auto px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h4 class="text-lavo-blue font-heading font-bold uppercase tracking-widest mb-4" data-animate="fade-up">GIẢI PHÁP</h4>
+                <div data-animate="fade-up" data-delay="1"><h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-light text-lavo-blue mb-6 leading-[4rem] whitespace-nowrap relative left-1/2 -translate-x-1/2 w-max max-w-none">GIẢI PHÁP THEO TỪNG TRẠNG THÁI TÓC</h2></div>
+                <p class="text-gray-500 font-body" data-animate="fade-up" data-delay="2"><span class="inline-block">Mỗi mái tóc mang một đặc điểm riêng. LAVO mang đến giải pháp chăm sóc phù hợp theo từng trạng thái,</span> <span class="inline-block">giúp mái tóc dần đạt được sự cân bằng, mềm mại và tự nhiên.</span></p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" data-animate="stagger">
+                <!-- Sol 1 -->
+                <div class="border border-gray-300 rounded-xl overflow-hidden bg-white flex flex-col group hover:shadow-lg transition">
+                    <div class="h-36 w-full bg-cover bg-center" style="background-image: url('hair1.png');"></div>
+                    <div class="p-4 flex-1 flex flex-col">
+                        <h3 class="font-heading font-bold text-lg text-lavo-blue mb-2 uppercase">TÓC HƯ TỔN</h3>
+                        <div class="w-full h-px bg-gray-300 mb-2"></div>
+                        <p class="text-gray-500 text-sm font-body leading-relaxed">Mỗi mái tóc mang một đặc điểm riêng.<br>LAVO mang đến giải pháp...</p>
+                    </div>
+                </div>
+                <!-- Sol 2 -->
+                <div class="border border-gray-300 rounded-xl overflow-hidden bg-white flex flex-col group hover:shadow-lg transition">
+                    <div class="h-36 w-full bg-cover bg-center" style="background-image: url('hair2.png');"></div>
+                    <div class="p-4 flex-1 flex flex-col">
+                        <h3 class="font-heading font-bold text-lg text-lavo-blue mb-2 uppercase">TÓC NHUỘM</h3>
+                        <div class="w-full h-px bg-gray-300 mb-2"></div>
+                        <p class="text-gray-500 text-sm font-body leading-relaxed">Mỗi mái tóc mang một đặc điểm riêng.<br>LAVO mang đến giải pháp...</p>
+                    </div>
+                </div>
+                <!-- Sol 3 -->
+                <div class="border border-gray-300 rounded-xl overflow-hidden bg-white flex flex-col group hover:shadow-lg transition">
+                    <div class="h-36 w-full bg-cover bg-center" style="background-image: url('hair3.png');"></div>
+                    <div class="p-4 flex-1 flex flex-col">
+                        <h3 class="font-heading font-bold text-lg text-lavo-blue mb-2 uppercase">TÓC MỎNG, YẾU</h3>
+                        <div class="w-full h-px bg-gray-300 mb-2"></div>
+                        <p class="text-gray-500 text-sm font-body leading-relaxed">Mỗi mái tóc mang một đặc điểm riêng.<br>LAVO mang đến giải pháp...</p>
+                    </div>
+                </div>
+                <!-- Sol 4 -->
+                <div class="border border-gray-300 rounded-xl overflow-hidden bg-white flex flex-col group hover:shadow-lg transition">
+                    <div class="h-36 w-full bg-cover bg-center" style="background-image: url('hair4.png');"></div>
+                    <div class="p-4 flex-1 flex flex-col">
+                        <h3 class="font-heading font-bold text-lg text-lavo-blue mb-2 uppercase">TÓC DẦU</h3>
+                        <div class="w-full h-px bg-gray-300 mb-2"></div>
+                        <p class="text-gray-500 text-sm font-body leading-relaxed">Mỗi mái tóc mang một đặc điểm riêng.<br>LAVO mang đến giải pháp...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Banner -->
+    <section class="relative bg-cover bg-center bg-no-repeat pt-[70px] pb-12 h-[500px]" style="background-image: url('training-bg.png');">
+        <!-- Overlay to ensure text readability against the image -->
+        <div class="absolute inset-0 bg-black/30"></div>
+        
+        <div class="container mx-auto px-8 relative z-10 text-center">
+            <h4 class="font-heading font-bold uppercase tracking-widest text-white mb-3 text-sm" data-animate="fade-down">KIẾN THỨC & ĐÀO TẠO</h4>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-light text-white mb-6 uppercase" data-animate="scale-up" data-delay="1">NỀN TẢNG KỸ THUẬT & ĐÀO TẠO CHUYÊN NGHIỆP</h2>
+            <p class="text-white text-sm md:text-base max-w-2xl mx-auto font-body leading-relaxed opacity-90" data-animate="fade-up" data-delay="2">
+                Nền tảng kiến thức toàn diện dành cho ngành tóc chuyên nghiệp – nơi hội tụ kỹ thuật,<br class="hidden md:block">
+                công thức và quy trình chuẩn, giúp nâng cao tay nghề một cách bài bản.
+            </p>
+        </div>
+    </section>
+
+    <!-- Video Section 1 -->
+    <section class="py-12 bg-[#2a2a2a] text-white">
+        <div class="container mx-auto px-4 md:px-8 text-center">
+            <div class="flex items-center justify-center mb-4" data-animate="fade-down">
+                <svg class="w-6 h-6 mr-2 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                <h4 class="font-heading font-bold uppercase tracking-widest text-sm">VIDEO YOUTUBE</h4>
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-light mb-6 uppercase" data-animate="fade-up" data-delay="1">VIDEO ĐÀO TẠO CHUYÊN SÂU</h2>
+            <p class="text-gray-300 font-body text-sm mb-16" data-animate="fade-up" data-delay="2">Hệ thống video hướng dẫn kỹ thuật và công thức từ đội ngũ chuyên gia</p>
+            
+            <div class="relative flex items-center justify-center w-full">
+                <!-- Left Arrow -->
+                <button class="absolute left-0 -ml-4 md:-ml-8 lg:-ml-12 z-10 w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-800 hover:bg-gray-200 transition shadow-lg cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                
+                <!-- Video Grid (5 columns) -->
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 w-full">
+                    <!-- Vid 1 -->
+                    <div class="relative group cursor-pointer aspect-[9/16] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1" style="background-image: url('video1.png');">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 bg-white/80 rounded-full flex items-center justify-center text-gray-800 group-hover:scale-110 transition backdrop-blur-sm">
+                                <svg class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vid 2 -->
+                    <div class="relative group cursor-pointer aspect-[9/16] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1" style="background-image: url('video2.png');">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 bg-white/80 rounded-full flex items-center justify-center text-gray-800 group-hover:scale-110 transition backdrop-blur-sm">
+                                <svg class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vid 3 -->
+                    <div class="relative group cursor-pointer aspect-[9/16] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1" style="background-image: url('video3.png');">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 bg-white/80 rounded-full flex items-center justify-center text-gray-800 group-hover:scale-110 transition backdrop-blur-sm">
+                                <svg class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vid 4 -->
+                    <div class="relative group cursor-pointer aspect-[9/16] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1 hidden md:block" style="background-image: url('video4.png');">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 bg-white/80 rounded-full flex items-center justify-center text-gray-800 group-hover:scale-110 transition backdrop-blur-sm">
+                                <svg class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vid 5 -->
+                    <div class="relative group cursor-pointer aspect-[9/16] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1 hidden md:block" style="background-image: url('video5.png');">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 bg-white/80 rounded-full flex items-center justify-center text-gray-800 group-hover:scale-110 transition backdrop-blur-sm">
+                                <svg class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Arrow -->
+                <button class="absolute right-0 -mr-4 md:-mr-8 lg:-mr-12 z-10 w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-800 hover:bg-gray-200 transition shadow-lg cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section 2 (TikTok) -->
+    <section class="py-12 bg-[#1a1a1a] text-white border-t border-gray-800">
+        <div class="container mx-auto px-4 md:px-8 text-center">
+            <div class="flex items-center justify-center mb-4">
+                <div class="bg-white rounded p-1 mr-2 flex items-center justify-center">
+                    <img src="tiktok-svgrepo-com.svg" alt="TikTok" class="w-4 h-4">
+                </div>
+                <h4 class="font-heading font-bold uppercase tracking-widest text-sm">VIDEO TIKTOK</h4>
+            </div>
+<h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-light mb-6 uppercase" data-animate="fade-up" data-delay="1">MẸO &amp; XU HƯỚNG TÓC</h2>
+            <p class="text-gray-400 font-body text-sm mb-16" data-animate="fade-up" data-delay="2">Các video ngắn về kỹ thuật, mẹo và xu hướng tóc mới nhất.</p>
+            
+            <div class="relative flex items-center justify-center w-full">
+                <!-- Left Arrow -->
+                <button class="absolute left-0 -ml-4 md:-ml-8 lg:-ml-12 z-10 w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-800 hover:bg-gray-200 transition shadow-lg cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                
+                <!-- Video Grid (5 columns) -->
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 w-full">
+                    <!-- Vid 1 -->
+                    <div class="relative group cursor-pointer aspect-[9/16] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1" style="background-image: url('tiktok1.png');">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 bg-white/80 rounded-full flex items-center justify-center text-gray-800 group-hover:scale-110 transition backdrop-blur-sm">
+                                <svg class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vid 2 -->
+                    <div class="relative group cursor-pointer aspect-[9/16] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1" style="background-image: url('tiktok2.png');">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 bg-white/80 rounded-full flex items-center justify-center text-gray-800 group-hover:scale-110 transition backdrop-blur-sm">
+                                <svg class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vid 3 -->
+                    <div class="relative group cursor-pointer aspect-[9/16] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1" style="background-image: url('tiktok3.png');">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 bg-white/80 rounded-full flex items-center justify-center text-gray-800 group-hover:scale-110 transition backdrop-blur-sm">
+                                <svg class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vid 4 -->
+                    <div class="relative group cursor-pointer aspect-[9/16] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1 hidden md:block" style="background-image: url('tiktok4.png');">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 bg-white/80 rounded-full flex items-center justify-center text-gray-800 group-hover:scale-110 transition backdrop-blur-sm">
+                                <svg class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vid 5 -->
+                    <div class="relative group cursor-pointer aspect-[9/16] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1 hidden md:block" style="background-image: url('tiktok5.png');">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 bg-white/80 rounded-full flex items-center justify-center text-gray-800 group-hover:scale-110 transition backdrop-blur-sm">
+                                <svg class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Arrow -->
+                <button class="absolute right-0 -mr-4 md:-mr-8 lg:-mr-12 z-10 w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-800 hover:bg-gray-200 transition shadow-lg cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="relative bg-white overflow-hidden bg-cover bg-right" style="background-image: url('salon-bg.png');">
+        <div class="container mx-auto px-4 md:px-8 relative z-10 h-full flex flex-col justify-center">
+            <div class="flex flex-col w-full lg:max-w-[770px] space-y-6 md:space-y-8">
+                <!-- Text Header -->
+                <div>
+                    <h4 class="text-[#1e3a8a] font-heading font-bold uppercase tracking-widest text-sm mb-2" data-animate="fade-right">HỆ SINH THÁI</h4>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-light text-[#1e3a8a] mb-4 uppercase" data-animate="fade-right">CỘNG ĐỒNG SALON LAVO</h2>
+                    <p class="text-gray-600 font-body text-sm mb-4 max-w-2xl" data-animate="fade-right">Kết nối cùng mạng lưới 500+ Salon đối tác trên toàn quốc, chia sẻ kinh nghiệm và cùng phát triển.</p>
+                </div>
+
+                <!-- Cards -->
+                <div class="flex flex-col space-y-4" data-animate="stagger">
+                    <!-- Card 1 -->
+                    <div class="flex flex-row bg-white rounded-xl border border-[#1e3a8a] overflow-hidden h-[150px] shadow-sm transition transform hover:-translate-y-1">
+                        <div class="w-[60%] py-3 px-5 flex flex-col justify-center">
+                            <h3 class="font-heading font-bold text-base md:text-lg text-[#1e3a8a] mb-2">SALON LOCATOR</h3>
+                            <div class="w-full h-px bg-gray-200 mb-2"></div>
+                            <p class="text-gray-500 text-xs md:text-sm line-clamp-2">Tìm kiếm salon LAVO gần bạn với dịch vụ chuyên nghiệp và trải nghiệm đồng nhất.</p>
+                        </div>
+                        <div class="w-[40%] bg-cover bg-center" style="background-image: url('card-img1.png');"></div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="flex flex-row bg-white rounded-xl border border-[#1e3a8a] overflow-hidden h-[150px] shadow-sm transition transform hover:-translate-y-1">
+                        <div class="w-[60%] py-3 px-5 flex flex-col justify-center">
+                            <h3 class="font-heading font-bold text-base md:text-lg text-[#1e3a8a] mb-2">CASE SALON</h3>
+                            <div class="w-full h-px bg-gray-200 mb-2"></div>
+                            <p class="text-gray-500 text-xs md:text-sm line-clamp-2">Tìm kiếm salon LAVO gần bạn với dịch vụ chuyên nghiệp và trải nghiệm đồng nhất.</p>
+                        </div>
+                        <div class="w-[40%] bg-cover bg-center" style="background-image: url('card-img2.png');"></div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="flex flex-row bg-white rounded-xl border border-[#1e3a8a] overflow-hidden h-[150px] shadow-sm transition transform hover:-translate-y-1">
+                        <div class="w-[60%] py-3 px-5 flex flex-col justify-center">
+                            <h3 class="font-heading font-bold text-base md:text-lg text-[#1e3a8a] mb-2">HỆ SINH THÁI SALON</h3>
+                            <div class="w-full h-px bg-gray-200 mb-2"></div>
+                            <p class="text-gray-500 text-xs md:text-sm line-clamp-2">Tìm kiếm salon LAVO gần bạn với dịch vụ chuyên nghiệp và trải nghiệm đồng nhất.</p>
+                        </div>
+                        <div class="w-[40%] bg-cover bg-center" style="background-image: url('card-img3.png');"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Event Section -->
+    <section class="relative flex flex-col md:flex-row bg-white bg-no-repeat bg-cover bg-left md:bg-center" style="background-image: url('cta-bg.png');">
+        
+        <!-- Left Spacer (to push text to the right) -->
+        <div class="w-full md:w-1/2 min-h-[250px] md:min-h-[500px]"></div>
+        
+        <!-- Right Content -->
+        <div class="w-full md:w-1/2 flex items-center justify-center p-8 md:p-12 relative z-10">
+            <div class="text-center flex flex-col items-center">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-light text-[#1e3a8a] mb-4 uppercase leading-[4rem]" data-animate="fade-up">KHỞI ĐẦU<br><span class="whitespace-nowrap inline-block mt-4">HÀNH TRÌNH CHUYÊN NGHIỆP</span></h2>
+                
+                <div class="flex items-center justify-center gap-4 mb-8" data-animate="scale-up" data-delay="1">
+                    <span class="text-xl md:text-2xl font-heading text-[#1e3a8a] uppercase">CÙNG</span>
+                    <img src="cta-logo.png" alt="LAVO Logo" class="h-16 md:h-20 object-contain">
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4" data-animate="fade-up" data-delay="2">
+                    <button class="bg-[#1e3a8a] text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-900 transition shadow-md">Kết nối với LAVO</button>
+                    <button class="bg-[#6b7280] text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-700 transition shadow-md">Khám phá đào tạo</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0b162c] text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12">
+                
+                <!-- Column 1: Logo & Info -->
+                <div class="col-span-1 flex flex-col items-start">
+                    <img src="cta-logo.png" alt="LAVO Logo" class="h-12 object-contain mb-4" style="filter: brightness(0) invert(1);">
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <p class="text-sm font-semibold mb-6 uppercase tracking-wider leading-relaxed">
+                        PLATFORM<br>MỸ PHẨM TÓC CHUYÊN NGHIỆP<br>HÀNG ĐẦU VIỆT NAM
+                    </p>
+                    <div class="flex space-x-4 items-center">
+                        <!-- Facebook -->
+                        <a href="#" class="bg-white text-[#0b162c] w-11 h-11 rounded-2xl flex items-center justify-center hover:bg-gray-200 transition overflow-hidden">
+                            <svg class="h-7 w-auto pr-1" fill="currentColor" viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+                        </a>
+                        <!-- TikTok -->
+                        <a href="#" class="bg-white text-[#0b162c] w-11 h-11 rounded-2xl flex items-center justify-center hover:bg-gray-200 transition">
+                            <svg class="h-6 w-auto" fill="currentColor" viewBox="0 0 448 512"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+                        </a>
+                        <!-- YouTube -->
+                        <a href="#" class="bg-white text-[#0b162c] w-11 h-11 rounded-2xl flex items-center justify-center hover:bg-gray-200 transition">
+                            <svg class="h-5 w-auto ml-1" fill="currentColor" viewBox="0 0 384 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Liên Kết Nhanh -->
+                <div>
+                    <div class="flex items-center h-12 mb-4">
+                        <div class="bg-white rounded-full p-1 mr-2 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-[#0b162c]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h5 class="font-heading font-bold uppercase text-sm tracking-wide">LIÊN KẾT NHANH</h5>
+                    </div>
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Về chúng tôi</a></li>
+                        <li><a href="#" class="hover:text-white transition">Sản phẩm</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tech Hub</a></li>
+                        <li><a href="#" class="hover:text-white transition">Academy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tìm Salon</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Dịch Vụ -->
+                <div>
+                    <div class="flex items-center h-12 mb-4">
+                        <div class="bg-white rounded-full p-1 mr-2 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-[#0b162c]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h5 class="font-heading font-bold uppercase text-sm tracking-wide">DỊCH VỤ</h5>
+                    </div>
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Giải pháp chuyên nghiệp</a></li>
+                        <li><a href="#" class="hover:text-white transition">Routine tóc</a></li>
+                        <li><a href="#" class="hover:text-white transition">Đào tạo</a></li>
+                        <li><a href="#" class="hover:text-white transition">Workshop</a></li>
+                        <li><a href="#" class="hover:text-white transition">Sustainability</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Liên Hệ -->
+                <div>
+                    <div class="flex items-center h-12 mb-4">
+                        <div class="bg-white rounded-full p-1 mr-2 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-[#0b162c]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h5 class="font-heading font-bold uppercase text-sm tracking-wide">LIÊN HỆ</h5>
+                    </div>
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li>Địa Chỉ: 11 Nguyễn Sơn,<br>Phường Phú Thạnh, Tp.HCM</li>
+                        <li>Điện Thoại: 028 3973 5599</li>
+                        <li>HOTLINE: 1900 77 99 26</li>
+                        <li>Fax: 028 3973 5959</li>
+                        <li>Email: lavo@lavo.com.vn</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 text-center text-gray-500 text-xs">
+                &copy; 2026 LAVO. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="animations.js"></script>
+
+    <!-- Theme Switcher -->
+    <style>
+    .tsw{position:fixed;bottom:24px;right:24px;z-index:9999;background:#fff;border:1px solid #e2e8f0;border-radius:28px;padding:8px 12px;display:flex;gap:8px;box-shadow:0 2px 12px rgba(0,0,0,0.1)}
+    .tsw span{display:inline-block;width:26px;height:26px;border-radius:50%;border:2px solid #cbd5e1;cursor:pointer;flex-shrink:0;transition:all .2s}
+    .tsw span:hover{transform:scale(1.2);border-color:#2563eb}
+    .tsw span.ac{border-color:#1e3a8a;box-shadow:0 0 0 3px rgba(30,58,138,.35)}
+    </style>
+    <div class="tsw" id="tsw">
+     <span data-bg="#F8FAFC" style="background:#F8FAFC" class="ac" title="Default"></span>
+     <span data-bg="#EFEEF2" style="background:#EFEEF2" title="#EFEEF2"></span>
+     <span data-bg="#F0F2F4" style="background:#F0F2F4" title="#F0F2F4"></span>
+     <span data-bg="#F5F5F5" style="background:#F5F5F5" title="#F5F5F5"></span>
+     <span data-bg="#E5E5E5" style="background:#E5E5E5" title="#E5E5E5"></span>
+    </div>
+    <script>
+    document.querySelectorAll('.tsw span').forEach(el=>{el.onclick=function(){document.querySelectorAll('.tsw span').forEach(s=>s.classList.remove('ac'));this.classList.add('ac');document.body.style.backgroundColor=this.dataset.bg}})
+    </script>
+</body>
+</html>
