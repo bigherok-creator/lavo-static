@@ -1,0 +1,207 @@
+/* ═══════════════════════════════════════════════════════════════
+   LAVO — Professional Scroll & Load Animations
+   Elegant, subtle, premium feel
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Base: elements start hidden ─── */
+.animate-on-scroll,
+.animate-on-load {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* ─── 1. FADE UP (default) ─── */
+[data-animate="fade-up"] {
+    transform: translateY(40px);
+}
+[data-animate="fade-up"].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── 2. FADE DOWN ─── */
+[data-animate="fade-down"] {
+    transform: translateY(-40px);
+}
+[data-animate="fade-down"].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── 3. FADE LEFT ─── */
+[data-animate="fade-left"] {
+    transform: translateX(-60px);
+}
+[data-animate="fade-left"].is-visible {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── 4. FADE RIGHT ─── */
+[data-animate="fade-right"] {
+    transform: translateX(60px);
+}
+[data-animate="fade-right"].is-visible {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── 5. SCALE UP (zoom in) ─── */
+[data-animate="scale-up"] {
+    transform: scale(0.88);
+}
+[data-animate="scale-up"].is-visible {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── 6. SCALE + FADE (cards, images) ─── */
+[data-animate="scale-fade"] {
+    transform: scale(0.92) translateY(30px);
+}
+[data-animate="scale-fade"].is-visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── 7. REVEAL LINE (for headings — underline sweep) ─── */
+[data-animate="reveal-line"] {
+    position: relative;
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+}
+[data-animate="reveal-line"].is-visible {
+    opacity: 1;
+    clip-path: inset(0 0% 0 0);
+    transition: opacity 0.6s ease,
+                clip-path 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── 8. STAGGER CHILDREN (grid items, list items) ─── */
+[data-animate="stagger"] > * {
+    opacity: 0;
+    transform: translateY(30px);
+}
+[data-animate="stagger"].is-visible {
+    opacity: 1;
+}
+[data-animate="stagger"].is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-animate="stagger"].is-visible > *:nth-child(1) { transition-delay: 0.00s; }
+[data-animate="stagger"].is-visible > *:nth-child(2) { transition-delay: 0.12s; }
+[data-animate="stagger"].is-visible > *:nth-child(3) { transition-delay: 0.24s; }
+[data-animate="stagger"].is-visible > *:nth-child(4) { transition-delay: 0.36s; }
+[data-animate="stagger"].is-visible > *:nth-child(5) { transition-delay: 0.48s; }
+[data-animate="stagger"].is-visible > *:nth-child(6) { transition-delay: 0.60s; }
+
+/* ─── 9. HERO SPECIAL — dramatic entrance ─── */
+[data-animate="hero-title"] {
+    opacity: 0;
+    transform: translateY(60px);
+    letter-spacing: 0.15em;
+}
+[data-animate="hero-title"].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: normal;
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                letter-spacing 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-animate="hero-subtitle"] {
+    opacity: 0;
+    transform: translateY(30px);
+}
+[data-animate="hero-subtitle"].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s,
+                transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+
+[data-animate="hero-body"] {
+    opacity: 0;
+    transform: translateY(20px);
+}
+[data-animate="hero-body"].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s,
+                transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s;
+}
+
+/* ─── 10. PARALLAX IMAGE (subtle depth) ─── */
+[data-animate="parallax"] {
+    opacity: 0;
+    transform: translateY(60px) scale(1.05);
+}
+[data-animate="parallax"].is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── 11. COUNTER / NUMBER COUNT-UP ─── */
+[data-animate="count-up"] {
+    opacity: 0;
+}
+[data-animate="count-up"].is-visible {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* ─── 12. BLUR IN (premium soft reveal) ─── */
+[data-animate="blur-in"] {
+    opacity: 0;
+    filter: blur(12px);
+    transform: scale(0.97);
+}
+[data-animate="blur-in"].is-visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 1s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── Delay utilities ─── */
+[data-delay="1"] { transition-delay: 0.10s !important; }
+[data-delay="2"] { transition-delay: 0.20s !important; }
+[data-delay="3"] { transition-delay: 0.30s !important; }
+[data-delay="4"] { transition-delay: 0.40s !important; }
+[data-delay="5"] { transition-delay: 0.50s !important; }
+[data-delay="6"] { transition-delay: 0.60s !important; }
+[data-delay="7"] { transition-delay: 0.70s !important; }
+[data-delay="8"] { transition-delay: 0.80s !important; }
+
+/* ─── Respect reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+    .animate-on-scroll,
+    .animate-on-load,
+    [data-animate] {
+        opacity: 1 !important;
+        transform: none !important;
+        clip-path: none !important;
+        filter: none !important;
+        transition: none !important;
+    }
+}

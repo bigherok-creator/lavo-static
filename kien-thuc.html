@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAVO - Kiến Thức</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind-config.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .event-card {
+            border-left: 1px solid rgba(255,255,255,0.2);
+            padding-left: 1.5rem;
+        }
+        .event-card:first-child {
+            border-left: none;
+            padding-left: 0;
+        }
+        @media (max-width: 768px) {
+            .event-card {
+                border-left: none;
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+                padding-left: 0;
+                padding-bottom: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .event-card:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+        }
+        .bg-dark-blue { background-color: #0b162c; }
+        .text-dark-blue { color: #0b162c; }
+        
+        .list-item-hover:hover .list-icon {
+            transform: translateX(5px);
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+<body class="text-gray-800 bg-[#F8FAFC]">
+
+    <!-- Header -->
+    <header class="bg-[#0b162c] text-white py-4 px-[6.25vw] flex justify-between items-center w-full sticky top-0 z-50">
+        <div class="flex items-center">
+            <a href="index.html">
+                <img src="cta-logo.png" alt="LAVO Logo" class="h-8 object-contain" style="filter: brightness(0) invert(1);">
+            </a>
+        </div>
+        <!-- Hamburger button (mobile) -->
+        <button id="hamburger-btn" class="md:hidden text-white focus:outline-none" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <svg id="hamburger-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide items-center">
+            <a href="#" class="hover:text-gray-300 transition">Công ty</a>
+            <a href="thuong-hieu.html" class="hover:text-gray-300 transition">Thương hiệu</a>
+            <a href="#" class="hover:text-gray-300 transition">Sản phẩm</a>
+            <a href="kien-thuc.html" class="hover:text-gray-300 transition flex items-center">
+                <span class="bg-white text-[#0b162c] rounded-full w-4 h-4 flex items-center justify-center mr-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </span>
+                Kiến thức
+            </a>
+            <a href="#" class="hover:text-gray-300 transition">Hệ sinh thái</a>
+            <a href="index.html" class="hover:text-gray-300 transition">Landing Page</a>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden w-full bg-[#0b162c] text-white md:hidden fixed top-[56px] left-0 right-0 z-40 border-t border-white/10">
+        <nav class="flex flex-col px-6 py-4 space-y-1">
+            <a href="#" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Công ty</a>
+            <a href="thuong-hieu.html" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Thương hiệu</a>
+            <a href="#" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Sản phẩm</a>
+            <a href="kien-thuc.html" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Kiến thức</a>
+            <a href="#" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Hệ sinh thái</a>
+            <a href="index.html" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Landing Page</a>
+        </nav>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="relative bg-[#0b162c] text-white flex items-center min-h-[450px] overflow-hidden">
+        <!-- Glowing lines background effect placeholder -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0b162c] to-blue-900/40"></div>
+            <!-- Streaks -->
+            <div class="absolute top-1/4 -right-20 w-[120%] h-1 bg-blue-400/30 rotate-12 blur-sm"></div>
+            <div class="absolute top-1/3 -right-20 w-[120%] h-2 bg-blue-300/40 rotate-12 blur-md"></div>
+            <div class="absolute bottom-1/4 -left-20 w-[120%] h-1 bg-blue-400/30 -rotate-6 blur-sm"></div>
+        </div>
+
+        <div class="container mx-auto px-8 relative z-10 flex flex-col md:flex-row items-center">
+            <div class="w-full md:w-1/2 mb-8 md:mb-0">
+                <h4 class="text-blue-300 font-heading font-semibold uppercase tracking-widest mb-2 text-sm md:text-base">KIẾN THỨC & ĐÀO TẠO</h4>
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 leading-tight uppercase italic">
+                    NÂNG TẦM<br>KỸ NĂNG SALON<br>BẰNG NỀN TẢNG<br>KHOA HỌC
+                </h1>
+            </div>
+            <div class="w-full md:w-1/2 flex justify-end">
+                <!-- Placeholder for the woman image -->
+                <div class="w-full max-w-md h-[350px] rounded-lg overflow-hidden flex items-end justify-center relative">
+                    <img src="hair1.png" alt="Hero Woman Placeholder" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-luminosity">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0b162c] to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Cards -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Uốn -->
+                <div class="group cursor-pointer">
+                    <h3 class="text-sm font-heading font-light text-gray-500 uppercase tracking-widest mb-1">CÔNG NGHỆ</h3>
+                    <h2 class="text-2xl font-heading font-light text-[#1e3a8a] uppercase mb-4">UỐN</h2>
+                    <div class="aspect-square w-full bg-gray-100 rounded-lg overflow-hidden relative">
+                        <img src="hair2.png" alt="Uốn" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                </div>
+                <!-- Card 2: Duỗi -->
+                <div class="group cursor-pointer">
+                    <h3 class="text-sm font-heading font-light text-gray-500 uppercase tracking-widest mb-1">CÔNG NGHỆ</h3>
+                    <h2 class="text-2xl font-heading font-light text-[#1e3a8a] uppercase mb-4">DUỖI</h2>
+                    <div class="aspect-square w-full bg-gray-100 rounded-lg overflow-hidden relative">
+                        <img src="hair3.png" alt="Duỗi" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                </div>
+                <!-- Card 3: Phục Hồi -->
+                <div class="group cursor-pointer">
+                    <h3 class="text-sm font-heading font-light text-gray-500 uppercase tracking-widest mb-1">CÔNG NGHỆ</h3>
+                    <h2 class="text-2xl font-heading font-light text-[#1e3a8a] uppercase mb-4">PHỤC HỒI</h2>
+                    <div class="aspect-square w-full bg-gray-100 rounded-lg overflow-hidden relative">
+                        <img src="hair4.png" alt="Phục Hồi" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lavo Academy Section -->
+    <section class="py-16 relative bg-gray-50 overflow-hidden">
+        <!-- Building sketch background placeholder -->
+        <div class="absolute inset-0 z-0 opacity-10 bg-[url('rect1.png')] bg-cover bg-center"></div>
+        
+        <div class="container mx-auto px-8 relative z-10">
+            <div class="mb-10">
+                <h4 class="text-blue-600 font-heading font-bold uppercase tracking-widest mb-2 text-sm">LAVO ACADEMY</h4>
+                <h2 class="text-4xl md:text-5xl font-heading font-light text-[#1e3a8a] mb-4 uppercase">HỌC VIỆN LAVOX</h2>
+                <p class="text-gray-500 text-sm max-w-xl">Khám phá các khóa học đào tạo chuyên nghiệp từ cơ bản đến nâng cao. Phát triển kỹ năng nghề nghiệp cùng đội ngũ chuyên gia hàng đầu.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 max-w-4xl">
+                <!-- Path 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <h3 class="text-sm font-heading font-bold text-[#1e3a8a] uppercase mb-3 border-b border-gray-100 pb-2">SALON<br>FOUNDATION</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Khóa học nền tảng cơ bản, trang bị kỹ năng thiết yếu cho người mới bắt đầu.</p>
+                </div>
+                <!-- Path 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <h3 class="text-sm font-heading font-bold text-[#1e3a8a] uppercase mb-3 border-b border-gray-100 pb-2">PROFESSIONAL<br>EXPERT</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Nâng cao tay nghề với các kỹ thuật uốn, duỗi, nhuộm chuyên sâu tại salon.</p>
+                </div>
+                <!-- Path 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <h3 class="text-sm font-heading font-bold text-[#1e3a8a] uppercase mb-3 border-b border-gray-100 pb-2">MASTER<br>STYLIST</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Định hình phong cách cá nhân, sáng tạo nghệ thuật và xu hướng tóc đỉnh cao.</p>
+                </div>
+            </div>
+
+            <button class="bg-[#1e3a8a] text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-900 transition shadow-md text-sm uppercase tracking-wide">Liên hệ ngay</button>
+        </div>
+    </section>
+
+    <!-- Video Carousel Section (Same styling as index) -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-8">
+            <div class="relative tech-video-swiper">
+                <!-- Swiper -->
+                <div class="swiper videoSwiper px-4">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><div class="relative group cursor-pointer aspect-[3/4] bg-cover bg-center rounded-xl overflow-hidden shadow-sm transition transform hover:-translate-y-1" style="background-image: url('video1.png');"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition"></div><div class="absolute inset-0 flex items-center justify-center"><div class="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-[#0b162c] group-hover:scale-110 transition backdrop-blur-sm"><svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div></div>
+                        <div class="swiper-slide"><div class="relative group cursor-pointer aspect-[3/4] bg-cover bg-center rounded-xl overflow-hidden shadow-sm transition transform hover:-translate-y-1" style="background-image: url('video2.png');"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition"></div><div class="absolute inset-0 flex items-center justify-center"><div class="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-[#0b162c] group-hover:scale-110 transition backdrop-blur-sm"><svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div></div>
+                        <div class="swiper-slide"><div class="relative group cursor-pointer aspect-[3/4] bg-cover bg-center rounded-xl overflow-hidden shadow-sm transition transform hover:-translate-y-1" style="background-image: url('video3.png');"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition"></div><div class="absolute inset-0 flex items-center justify-center"><div class="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-[#0b162c] group-hover:scale-110 transition backdrop-blur-sm"><svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div></div>
+                        <div class="swiper-slide"><div class="relative group cursor-pointer aspect-[3/4] bg-cover bg-center rounded-xl overflow-hidden shadow-sm transition transform hover:-translate-y-1" style="background-image: url('video4.png');"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition"></div><div class="absolute inset-0 flex items-center justify-center"><div class="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-[#0b162c] group-hover:scale-110 transition backdrop-blur-sm"><svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div></div>
+                        <div class="swiper-slide"><div class="relative group cursor-pointer aspect-[3/4] bg-cover bg-center rounded-xl overflow-hidden shadow-sm transition transform hover:-translate-y-1" style="background-image: url('video5.png');"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition"></div><div class="absolute inset-0 flex items-center justify-center"><div class="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-[#0b162c] group-hover:scale-110 transition backdrop-blur-sm"><svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div></div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <button class="video-prev absolute left-0 md:-left-8 z-20 w-8 h-8 bg-white border border-gray-200 rounded-full flex items-center justify-center text-[#0b162c] shadow hover:bg-gray-50 transition" style="top:50%;transform:translateY(-50%)">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button class="video-next absolute right-0 md:-right-8 z-20 w-8 h-8 bg-white border border-gray-200 rounded-full flex items-center justify-center text-[#0b162c] shadow hover:bg-gray-50 transition" style="top:50%;transform:translateY(-50%)">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule/Events Section -->
+    <section class="py-16 bg-[#0b162c] text-white">
+        <div class="container mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <!-- Event 1 -->
+                <div class="event-card flex flex-col">
+                    <div class="flex items-end mb-4">
+                        <span class="text-6xl font-heading font-light text-blue-400 leading-none mr-2">15</span>
+                        <span class="text-sm font-heading font-bold uppercase tracking-widest text-blue-200 mb-1">JUNE<br>2026</span>
+                    </div>
+                    <h3 class="text-sm font-bold uppercase tracking-wide mb-1">WORKSHOP</h3>
+                    <p class="text-xs text-gray-400 mb-4 h-8 line-clamp-2">Kỹ thuật uốn setting chuẩn salon chuyên nghiệp.</p>
+                    
+                    <div class="flex items-start text-xs text-gray-300 mb-2">
+                        <svg class="w-4 h-4 mr-1 shrink-0 mt-0.5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <span>Hồ Chí Minh<br>09 Nguyễn Trãi, Q.1</span>
+                    </div>
+                    
+                    <a href="#" class="text-blue-400 text-xs font-bold uppercase tracking-wider hover:text-white transition mt-auto pt-4 flex items-center">
+                        ĐĂNG KÝ NGAY
+                        <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-card flex flex-col">
+                    <div class="flex items-end mb-4">
+                        <span class="text-6xl font-heading font-light text-blue-400 leading-none mr-2">22</span>
+                        <span class="text-sm font-heading font-bold uppercase tracking-widest text-blue-200 mb-1">JUNE<br>2026</span>
+                    </div>
+                    <h3 class="text-sm font-bold uppercase tracking-wide mb-1">SEMINAR</h3>
+                    <p class="text-xs text-gray-400 mb-4 h-8 line-clamp-2">Xu hướng màu nhuộm thời trang 2026.</p>
+                    
+                    <div class="flex items-start text-xs text-gray-300 mb-2">
+                        <svg class="w-4 h-4 mr-1 shrink-0 mt-0.5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <span>Hà Nội<br>15 Đường Thanh Niên</span>
+                    </div>
+                    
+                    <a href="#" class="text-blue-400 text-xs font-bold uppercase tracking-wider hover:text-white transition mt-auto pt-4 flex items-center">
+                        ĐĂNG KÝ NGAY
+                        <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="event-card flex flex-col">
+                    <div class="flex items-end mb-4">
+                        <span class="text-6xl font-heading font-light text-blue-400 leading-none mr-2">05</span>
+                        <span class="text-sm font-heading font-bold uppercase tracking-widest text-blue-200 mb-1">JULY<br>2026</span>
+                    </div>
+                    <h3 class="text-sm font-bold uppercase tracking-wide mb-1">MASTER CLASS</h3>
+                    <p class="text-xs text-gray-400 mb-4 h-8 line-clamp-2">Nghệ thuật phục hồi tóc hư tổn chuyên sâu.</p>
+                    
+                    <div class="flex items-start text-xs text-gray-300 mb-2">
+                        <svg class="w-4 h-4 mr-1 shrink-0 mt-0.5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <span>Đà Nẵng<br>20 Nguyễn Văn Linh</span>
+                    </div>
+                    
+                    <a href="#" class="text-blue-400 text-xs font-bold uppercase tracking-wider hover:text-white transition mt-auto pt-4 flex items-center">
+                        ĐĂNG KÝ NGAY
+                        <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="event-card flex flex-col">
+                    <div class="flex items-end mb-4">
+                        <span class="text-6xl font-heading font-light text-blue-400 leading-none mr-2">19</span>
+                        <span class="text-sm font-heading font-bold uppercase tracking-widest text-blue-200 mb-1">JULY<br>2026</span>
+                    </div>
+                    <h3 class="text-sm font-bold uppercase tracking-wide mb-1">WORKSHOP</h3>
+                    <p class="text-xs text-gray-400 mb-4 h-8 line-clamp-2">Quản lý và vận hành Salon thời 4.0.</p>
+                    
+                    <div class="flex items-start text-xs text-gray-300 mb-2">
+                        <svg class="w-4 h-4 mr-1 shrink-0 mt-0.5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <span>Cần Thơ<br>15 Đường 30 Tháng 4</span>
+                    </div>
+                    
+                    <a href="#" class="text-blue-400 text-xs font-bold uppercase tracking-wider hover:text-white transition mt-auto pt-4 flex items-center">
+                        ĐĂNG KÝ NGAY
+                        <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Trends Section -->
+    <section class="py-16 bg-[#e2e8f0] relative overflow-hidden">
+        <div class="container mx-auto px-8 relative z-10 flex flex-col md:flex-row items-center">
+            
+            <div class="w-full md:w-[60%] lg:w-1/2 pr-0 md:pr-12 relative z-20">
+                <h4 class="text-gray-500 font-heading font-bold uppercase tracking-widest mb-2 text-sm">XU HƯỚNG NỔI BẬT</h4>
+                <h2 class="text-3xl md:text-5xl font-heading font-light text-[#0b162c] mb-2 uppercase leading-tight">MÀU NÂU TÂY LẠNH<br>LÊN NGÔI</h2>
+                <h2 class="text-5xl md:text-7xl font-heading font-bold text-[#0b162c] mb-6 italic">2026</h2>
+                
+                <p class="text-sm text-gray-600 mb-8 max-w-md leading-relaxed">Cập nhật ngay các kỹ thuật và phương pháp hiện đại nhất ứng dụng cho mái tóc phong cách.</p>
+                
+                <div class="flex flex-col space-y-4">
+                    <a href="#" class="list-item-hover group flex flex-col border-b border-gray-300 pb-3">
+                        <span class="text-xs font-bold text-gray-800 uppercase tracking-wide mb-1">KỸ THUẬT UỐN SETTING CHUẨN SALON</span>
+                        <div class="flex items-center text-[#1e3a8a] text-xs font-bold">
+                            <svg class="list-icon w-3 h-3 mr-1 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            Đọc ngay
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="list-item-hover group flex flex-col border-b border-gray-300 pb-3">
+                        <span class="text-xs font-bold text-gray-800 uppercase tracking-wide mb-1">CÔNG THỨC NHUỘM MÀU NÂU TÂY LẠNH</span>
+                        <div class="flex items-center text-[#1e3a8a] text-xs font-bold">
+                            <svg class="list-icon w-3 h-3 mr-1 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            Đọc ngay
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="list-item-hover group flex flex-col pb-3">
+                        <span class="text-xs font-bold text-gray-800 uppercase tracking-wide mb-1">PHỤC HỒI CHUYÊN SÂU KERATIN</span>
+                        <div class="flex items-center text-[#1e3a8a] text-xs font-bold">
+                            <svg class="list-icon w-3 h-3 mr-1 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            Đọc ngay
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="w-full md:w-[40%] lg:w-1/2 mt-10 md:mt-0 relative">
+                <!-- Placeholder for the trend image -->
+                <img src="hair1.png" alt="Trend Hair" class="w-full h-auto object-cover rounded-lg shadow-xl relative z-10" style="min-height: 400px; max-height: 500px; border-bottom-left-radius: 100px;">
+                <!-- Decorative background elements -->
+                <div class="absolute -top-10 -right-10 w-64 h-64 bg-white/40 rounded-full blur-3xl z-0"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community CTA Section -->
+    <section class="py-12 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <h2 class="text-2xl font-heading font-light text-[#1e3a8a] mb-1 uppercase">THAM GIA CỘNG ĐỒNG</h2>
+                <p class="text-xs text-gray-500">Cùng xây dựng cộng đồng Salon chuyên nghiệp lớn mạnh nhất Việt Nam.</p>
+            </div>
+            <button class="bg-[#0b162c] text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-900 transition shadow-md text-sm uppercase tracking-wider whitespace-nowrap">Đăng ký đào tạo ngay</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0b162c] text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12">
+                <!-- Column 1: Logo & Info -->
+                <div class="col-span-1 flex flex-col items-start">
+                    <img src="cta-logo.png" alt="LAVO Logo" class="h-12 object-contain mb-4" style="filter: brightness(0) invert(1);">
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <p class="text-sm font-semibold mb-6 uppercase tracking-wider leading-relaxed">
+                        PLATFORM<br>MỸ PHẨM TÓC CHUYÊN NGHIỆP<br>HÀNG ĐẦU VIỆT NAM
+                    </p>
+                    <div class="flex space-x-4 items-center">
+                        <a href="#" class="bg-white text-[#0b162c] w-11 h-11 rounded-2xl flex items-center justify-center hover:bg-gray-200 transition overflow-hidden">
+                            <svg class="h-7 w-auto pr-1" fill="currentColor" viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+                        </a>
+                        <a href="#" class="bg-white text-[#0b162c] w-11 h-11 rounded-2xl flex items-center justify-center hover:bg-gray-200 transition">
+                            <svg class="h-6 w-auto" fill="currentColor" viewBox="0 0 448 512"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+                        </a>
+                        <a href="#" class="bg-white text-[#0b162c] w-11 h-11 rounded-2xl flex items-center justify-center hover:bg-gray-200 transition">
+                            <svg class="h-5 w-auto ml-1" fill="currentColor" viewBox="0 0 384 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Liên Kết Nhanh -->
+                <div>
+                    <div class="flex items-center h-12 mb-4">
+                        <div class="bg-white rounded-full p-1 mr-2 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-[#0b162c]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h5 class="font-heading font-bold uppercase text-sm tracking-wide">LIÊN KẾT NHANH</h5>
+                    </div>
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Về chúng tôi</a></li>
+                        <li><a href="#" class="hover:text-white transition">Sản phẩm</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tech Hub</a></li>
+                        <li><a href="#" class="hover:text-white transition">Academy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tìm Salon</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Dịch Vụ -->
+                <div>
+                    <div class="flex items-center h-12 mb-4">
+                        <div class="bg-white rounded-full p-1 mr-2 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-[#0b162c]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h5 class="font-heading font-bold uppercase text-sm tracking-wide">DỊCH VỤ</h5>
+                    </div>
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Giải pháp chuyên nghiệp</a></li>
+                        <li><a href="#" class="hover:text-white transition">Routine tóc</a></li>
+                        <li><a href="#" class="hover:text-white transition">Đào tạo</a></li>
+                        <li><a href="#" class="hover:text-white transition">Workshop</a></li>
+                        <li><a href="#" class="hover:text-white transition">Sustainability</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Liên Hệ -->
+                <div>
+                    <div class="flex items-center h-12 mb-4">
+                        <div class="bg-white rounded-full p-1 mr-2 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-[#0b162c]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h5 class="font-heading font-bold uppercase text-sm tracking-wide">LIÊN HỆ</h5>
+                    </div>
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li>Địa Chỉ: 11 Nguyễn Sơn,<br>Phường Phú Thạnh, Tp.HCM</li>
+                        <li>Điện Thoại: 028 3973 5599</li>
+                        <li>HOTLINE: 1900 77 99 26</li>
+                        <li>Fax: 028 3973 5959</li>
+                        <li>Email: lavo@lavo.com.vn</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 text-center text-gray-500 text-xs">
+                &copy; 2026 LAVO. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="animations.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+    function toggleMobileMenu() {
+        var menu = document.getElementById('mobile-menu');
+        var hamburger = document.getElementById('hamburger-icon');
+        var close = document.getElementById('close-icon');
+        menu.classList.toggle('hidden');
+        hamburger.classList.toggle('hidden');
+        close.classList.toggle('hidden');
+    }
+
+    var videoSwiper = new Swiper('.videoSwiper', {
+        slidesPerView: 2,
+        spaceBetween: 16,
+        loop: true,
+        navigation: {
+            nextEl: '.video-next',
+            prevEl: '.video-prev',
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 5,
+                spaceBetween: 20
+            }
+        }
+    });
+    </script>
+</body>
+</html>

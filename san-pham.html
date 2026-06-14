@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAVO - Sản Phẩm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind-config.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .brand-carousel-container {
+            position: relative;
+            padding: 40px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .swiper-slide-brand {
+            transition: all 0.3s ease;
+        }
+        .bg-dark-blue { background-color: #0b162c; }
+        .text-dark-blue { color: #0b162c; }
+        
+        .circle-icon-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.3);
+            border: 3px solid rgba(255,255,255,0.5);
+            position: relative;
+        }
+        .circle-icon-box::after {
+            content: '';
+            position: absolute;
+            top: -6px; left: -6px; right: -6px; bottom: -6px;
+            border-radius: 50%;
+            border: 1px dashed rgba(30, 58, 138, 0.3);
+        }
+        .molecule-label {
+            background-color: rgba(11, 22, 44, 0.8);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="text-gray-800 bg-[#F8FAFC]">
+
+    <!-- Header -->
+    <header class="bg-[#0b162c] text-white py-4 px-[6.25vw] flex justify-between items-center w-full sticky top-0 z-50">
+        <div class="flex items-center">
+            <a href="index.html">
+                <img src="cta-logo.png" alt="LAVO Logo" class="h-8 object-contain" style="filter: brightness(0) invert(1);">
+            </a>
+        </div>
+        <!-- Hamburger button (mobile) -->
+        <button id="hamburger-btn" class="md:hidden text-white focus:outline-none" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <svg id="hamburger-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide items-center">
+            <a href="#" class="hover:text-gray-300 transition">Công ty</a>
+            <a href="thuong-hieu.html" class="hover:text-gray-300 transition">Thương hiệu</a>
+            <a href="san-pham.html" class="hover:text-gray-300 transition flex items-center">
+                <span class="bg-white text-[#0b162c] rounded-full w-4 h-4 flex items-center justify-center mr-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </span>
+                Sản phẩm
+            </a>
+            <a href="kien-thuc.html" class="hover:text-gray-300 transition">Kiến thức</a>
+            <a href="#" class="hover:text-gray-300 transition">Hệ sinh thái</a>
+            <a href="index.html" class="hover:text-gray-300 transition">Landing Page</a>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden w-full bg-[#0b162c] text-white md:hidden fixed top-[56px] left-0 right-0 z-40 border-t border-white/10">
+        <nav class="flex flex-col px-6 py-4 space-y-1">
+            <a href="#" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Công ty</a>
+            <a href="thuong-hieu.html" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Thương hiệu</a>
+            <a href="san-pham.html" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Sản phẩm</a>
+            <a href="kien-thuc.html" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Kiến thức</a>
+            <a href="#" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Hệ sinh thái</a>
+            <a href="index.html" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Landing Page</a>
+        </nav>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="relative bg-[#081225] text-white flex items-center min-h-[500px] overflow-hidden">
+        <!-- Glowing tech background effect -->
+        <div class="absolute inset-0 z-0">
+            <!-- Grid and wave simulation -->
+            <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle at 50% 50%, #3b82f6 0%, transparent 60%);"></div>
+            <!-- Stars/Dots -->
+            <div class="absolute top-1/4 right-1/4 w-1 h-1 bg-white rounded-full shadow-[0_0_10px_2px_#fff]"></div>
+            <div class="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-blue-300 rounded-full shadow-[0_0_15px_3px_#3b82f6]"></div>
+            <div class="absolute bottom-1/3 right-1/4 w-1 h-1 bg-white rounded-full shadow-[0_0_8px_2px_#fff]"></div>
+            <div class="absolute bottom-1/4 left-1/3 w-2 h-2 bg-blue-400 rounded-full shadow-[0_0_20px_4px_#3b82f6]"></div>
+            
+            <!-- Bottom tech wave graphic -->
+            <div class="absolute bottom-0 left-0 w-full h-1/3 opacity-40 bg-gradient-to-t from-blue-600/50 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-8 relative z-10 flex flex-col md:flex-row items-center pt-8">
+            <div class="w-full md:w-1/2 mb-8 md:mb-0">
+                <h4 class="text-blue-400 font-heading font-medium uppercase tracking-widest mb-3 text-lg">KHÁM PHÁ</h4>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-3 leading-tight uppercase text-blue-400">
+                    CÔNG NGHỆ MỚI
+                </h1>
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-light uppercase tracking-wide">HOÀN THIỆN VẺ ĐẸP TÓC</h2>
+            </div>
+            <div class="w-full md:w-1/2 flex justify-end">
+                <!-- Image of smiling woman with curly hair -->
+                <div class="w-full max-w-lg relative">
+                    <img src="hair1.png" alt="Technology Hair Model" class="w-full h-auto object-cover relative z-10" style="mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <!-- Category 1 -->
+                <div class="bg-gradient-to-b from-gray-100 to-gray-200 rounded-xl p-8 flex flex-col items-center group cursor-pointer hover:shadow-xl transition duration-300">
+                    <h3 class="text-lg font-heading font-light text-gray-600 uppercase tracking-widest mb-8">UỐN DUỖI</h3>
+                    <div class="flex-1 flex items-center justify-center w-full">
+                        <img src="product4.png" alt="Uốn Duỗi" class="h-48 md:h-56 object-contain group-hover:scale-110 transition duration-500">
+                    </div>
+                </div>
+                <!-- Category 2 -->
+                <div class="bg-gradient-to-b from-gray-100 to-gray-200 rounded-xl p-8 flex flex-col items-center group cursor-pointer hover:shadow-xl transition duration-300 shadow-md transform -translate-y-2">
+                    <h3 class="text-lg font-heading font-light text-gray-600 uppercase tracking-widest mb-8">PHỤC HỒI</h3>
+                    <div class="flex-1 flex items-center justify-center w-full">
+                        <img src="product2.png" alt="Phục Hồi" class="h-48 md:h-56 object-contain group-hover:scale-110 transition duration-500">
+                    </div>
+                </div>
+                <!-- Category 3 -->
+                <div class="bg-gradient-to-b from-gray-100 to-gray-200 rounded-xl p-8 flex flex-col items-center group cursor-pointer hover:shadow-xl transition duration-300">
+                    <h3 class="text-lg font-heading font-light text-gray-600 uppercase tracking-widest mb-8">TẠO KIỂU</h3>
+                    <div class="flex-1 flex items-center justify-center w-full">
+                        <img src="product3.png" alt="Tạo Kiểu" class="h-48 md:h-56 object-contain group-hover:scale-110 transition duration-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What makes the difference (Science Section) -->
+    <section class="py-16 bg-white overflow-hidden relative">
+        <div class="container mx-auto px-8 relative z-10 flex flex-col lg:flex-row items-center gap-12">
+            
+            <!-- Left Text Content -->
+            <div class="w-full lg:w-1/2">
+                <h4 class="text-lg text-gray-600 font-heading font-medium uppercase tracking-widest mb-1">ĐIỂM TẠO NÊN</h4>
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-[#1e3a8a] mb-4 uppercase">SỰ KHÁC BIỆT</h2>
+                <h3 class="text-xl md:text-2xl font-heading text-[#1e3a8a] mb-6 font-light">Nền tảng khoa học - chất lượng dẫn đầu</h3>
+                
+                <p class="text-sm text-gray-500 mb-4 leading-relaxed max-w-md">LAVO mang đến giải pháp chuyên sâu cho từng tình trạng tóc, ứng dụng công nghệ tiên tiến nhất cùng nguồn nguyên liệu nhập khẩu châu Âu.</p>
+                <p class="text-sm text-gray-500 mb-10 leading-relaxed max-w-md">Mỗi sản phẩm đều trải qua quá trình nghiên cứu, thử nghiệm lâm sàng khắt khe, cam kết độ an toàn và hiệu quả tối ưu cho người sử dụng.</p>
+                
+                <!-- Circular Features -->
+                <div class="flex flex-wrap gap-8 md:gap-12">
+                    <div class="flex flex-col items-center text-center w-24">
+                        <div class="circle-icon-box">PROTECTION</div>
+                        <p class="text-xs text-gray-600 font-medium">BẢO VỆ TỐI ƯU<br>khỏi tác động nhiệt & hóa chất</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center w-24">
+                        <div class="circle-icon-box">NANO COMPLEX</div>
+                        <p class="text-xs text-gray-600 font-medium">PHỤC HỒI<br>từ sâu bên trong tủy tóc</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center w-24">
+                        <div class="circle-icon-box">SAFE</div>
+                        <p class="text-xs text-gray-600 font-medium">AN TOÀN<br>cho da đầu nhạy cảm</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right 3D Sphere Graphic -->
+            <div class="w-full lg:w-1/2 relative h-[400px] md:h-[500px] flex items-center justify-center">
+                <!-- Central large sphere -->
+                <div class="absolute w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-blue-300 via-blue-600 to-indigo-900 shadow-[inset_-20px_-20px_50px_rgba(0,0,0,0.5),0_20px_40px_rgba(30,58,138,0.4)] z-10"></div>
+                
+                <!-- Orbit lines -->
+                <div class="absolute w-80 h-80 md:w-[450px] md:h-[450px] rounded-full border border-blue-200/50 rotate-45 z-0"></div>
+                <div class="absolute w-96 h-96 md:w-[500px] md:h-[500px] rounded-full border border-blue-300/40 -rotate-12 z-0"></div>
+                <div class="absolute w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full border border-blue-100/30 rotate-75 z-0"></div>
+                
+                <!-- Small spheres (electrons/molecules) -->
+                <div class="absolute top-10 right-20 w-12 h-12 rounded-full bg-gradient-to-br from-blue-200 to-blue-500 shadow-lg z-20 flex items-center justify-center">
+                    <div class="molecule-label absolute -top-8 whitespace-nowrap">KERATIN</div>
+                </div>
+                <div class="absolute bottom-20 left-10 w-16 h-16 rounded-full bg-gradient-to-br from-indigo-300 to-indigo-600 shadow-lg z-20 flex items-center justify-center">
+                    <div class="molecule-label absolute -bottom-8 whitespace-nowrap">BOND TECH</div>
+                </div>
+                <div class="absolute top-1/2 -right-4 w-10 h-10 rounded-full bg-gradient-to-br from-cyan-200 to-blue-400 shadow-lg z-20 flex items-center justify-center">
+                    <div class="molecule-label absolute -right-24 whitespace-nowrap">NANO COMPLEX</div>
+                </div>
+                <div class="absolute bottom-1/3 right-1/4 w-8 h-8 rounded-full bg-gradient-to-br from-blue-100 to-blue-400 shadow-lg z-20"></div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Brands Carousel Section -->
+    <section class="py-12 bg-white relative">
+        <div class="container mx-auto px-8">
+            <div class="brand-carousel-container">
+                <div class="swiper brandProductSwiper">
+                    <div class="swiper-wrapper flex items-end pb-8">
+                        <!-- Brand 1 -->
+                        <div class="swiper-slide flex flex-col items-center group">
+                            <img src="logo1.png" alt="Lavox" class="h-6 mb-4 object-contain">
+                            <div class="h-40 w-full flex items-center justify-center relative">
+                                <img src="product1.png" alt="Lavox Product" class="max-h-full object-contain transition duration-300 transform group-hover:scale-110">
+                                <div class="absolute -bottom-4 w-24 h-4 bg-black/10 rounded-[100%] blur-sm"></div>
+                            </div>
+                        </div>
+                        <!-- Brand 2 -->
+                        <div class="swiper-slide flex flex-col items-center group">
+                            <img src="logo2.png" alt="X-Pros" class="h-6 mb-4 object-contain">
+                            <div class="h-40 w-full flex items-center justify-center relative">
+                                <img src="product2.png" alt="X-Pros Product" class="max-h-full object-contain transition duration-300 transform group-hover:scale-110">
+                                <div class="absolute -bottom-4 w-24 h-4 bg-black/10 rounded-[100%] blur-sm"></div>
+                            </div>
+                        </div>
+                        <!-- Brand 3 -->
+                        <div class="swiper-slide flex flex-col items-center group">
+                            <img src="logo3.png" alt="M-Pros" class="h-6 mb-4 object-contain">
+                            <div class="h-40 w-full flex items-center justify-center relative">
+                                <img src="product3.png" alt="M-Pros Product" class="max-h-full object-contain transition duration-300 transform group-hover:scale-110">
+                                <div class="absolute -bottom-4 w-24 h-4 bg-black/10 rounded-[100%] blur-sm"></div>
+                            </div>
+                        </div>
+                        <!-- Brand 4 -->
+                        <div class="swiper-slide flex flex-col items-center group">
+                            <img src="logo4.png" alt="Bostain" class="h-6 mb-4 object-contain">
+                            <div class="h-40 w-full flex items-center justify-center relative">
+                                <img src="product4.png" alt="Bostain Product" class="max-h-full object-contain transition duration-300 transform group-hover:scale-110">
+                                <div class="absolute -bottom-4 w-24 h-4 bg-black/10 rounded-[100%] blur-sm"></div>
+                            </div>
+                        </div>
+                        <!-- Brand 5 -->
+                        <div class="swiper-slide flex flex-col items-center group">
+                            <h4 class="font-bold text-gray-800 tracking-widest text-sm mb-4">YOUNWO</h4>
+                            <div class="h-40 w-full flex items-center justify-center relative">
+                                <img src="product1.png" alt="Younwo Product" class="max-h-full object-contain transition duration-300 transform group-hover:scale-110 opacity-60 grayscale">
+                                <div class="absolute -bottom-4 w-24 h-4 bg-black/10 rounded-[100%] blur-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Left Arrow -->
+                <button class="bp-swiper-prev absolute left-0 z-10 w-8 h-8 bg-white border border-blue-800 text-blue-800 rounded-full flex items-center justify-center hover:bg-blue-50 transition cursor-pointer" style="top:50%;transform:translateY(-50%)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <!-- Right Arrow -->
+                <button class="bp-swiper-next absolute right-0 z-10 w-8 h-8 bg-white border border-blue-800 text-blue-800 rounded-full flex items-center justify-center hover:bg-blue-50 transition cursor-pointer" style="top:50%;transform:translateY(-50%)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hair Models Section -->
+    <section class="py-4 bg-white relative">
+        <div class="container mx-auto px-4">
+            <div class="relative models-swiper-wrapper">
+                <div class="swiper modelsSwiper px-10">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="aspect-square bg-cover bg-center rounded-sm" style="background-image: url('hair2.png');"></div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="aspect-square bg-cover bg-center rounded-sm" style="background-image: url('hair3.png');"></div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="aspect-square bg-cover bg-center rounded-sm" style="background-image: url('hair4.png');"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Left Arrow -->
+                <button class="md-swiper-prev absolute left-0 md:left-4 z-10 w-8 h-8 bg-blue-800 text-white rounded-full flex items-center justify-center hover:bg-blue-900 transition cursor-pointer" style="top:50%;transform:translateY(-50%)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <!-- Right Arrow -->
+                <button class="md-swiper-next absolute right-0 md:right-4 z-10 w-8 h-8 bg-blue-800 text-white rounded-full flex items-center justify-center hover:bg-blue-900 transition cursor-pointer" style="top:50%;transform:translateY(-50%)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-12 bg-[#F0F2F5] border-t border-gray-200">
+        <div class="container mx-auto px-8 text-center">
+            <h2 class="text-xl md:text-2xl font-heading font-light text-[#1e3a8a] mb-2 uppercase">TƯ VẤN GIẢI PHÁP CHĂM SÓC TÓC CHUYÊN NGHIỆP</h2>
+            <p class="text-xs text-gray-500 mb-6">Đội ngũ chuyên gia Lavo luôn sẵn sàng hỗ trợ kỹ thuật và giải đáp mọi thắc mắc.</p>
+            <button class="bg-[#0b162c] text-white px-8 py-2.5 rounded-full font-bold hover:bg-blue-900 transition shadow-md text-sm uppercase tracking-wide">Liên hệ ngay</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0b162c] text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12">
+                <!-- Column 1: Logo & Info -->
+                <div class="col-span-1 flex flex-col items-start">
+                    <img src="cta-logo.png" alt="LAVO Logo" class="h-12 object-contain mb-4" style="filter: brightness(0) invert(1);">
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <p class="text-sm font-semibold mb-6 uppercase tracking-wider leading-relaxed">
+                        PLATFORM<br>MỸ PHẨM TÓC CHUYÊN NGHIỆP<br>HÀNG ĐẦU VIỆT NAM
+                    </p>
+                    <div class="flex space-x-4 items-center">
+                        <a href="#" class="bg-white text-[#0b162c] w-11 h-11 rounded-2xl flex items-center justify-center hover:bg-gray-200 transition overflow-hidden">
+                            <svg class="h-7 w-auto pr-1" fill="currentColor" viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+                        </a>
+                        <a href="#" class="bg-white text-[#0b162c] w-11 h-11 rounded-2xl flex items-center justify-center hover:bg-gray-200 transition">
+                            <svg class="h-6 w-auto" fill="currentColor" viewBox="0 0 448 512"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+                        </a>
+                        <a href="#" class="bg-white text-[#0b162c] w-11 h-11 rounded-2xl flex items-center justify-center hover:bg-gray-200 transition">
+                            <svg class="h-5 w-auto ml-1" fill="currentColor" viewBox="0 0 384 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Liên Kết Nhanh -->
+                <div>
+                    <div class="flex items-center h-12 mb-4">
+                        <div class="bg-white rounded-full p-1 mr-2 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-[#0b162c]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h5 class="font-heading font-bold uppercase text-sm tracking-wide">LIÊN KẾT NHANH</h5>
+                    </div>
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Về chúng tôi</a></li>
+                        <li><a href="#" class="hover:text-white transition">Sản phẩm</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tech Hub</a></li>
+                        <li><a href="#" class="hover:text-white transition">Academy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tìm Salon</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Dịch Vụ -->
+                <div>
+                    <div class="flex items-center h-12 mb-4">
+                        <div class="bg-white rounded-full p-1 mr-2 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-[#0b162c]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h5 class="font-heading font-bold uppercase text-sm tracking-wide">DỊCH VỤ</h5>
+                    </div>
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Giải pháp chuyên nghiệp</a></li>
+                        <li><a href="#" class="hover:text-white transition">Routine tóc</a></li>
+                        <li><a href="#" class="hover:text-white transition">Đào tạo</a></li>
+                        <li><a href="#" class="hover:text-white transition">Workshop</a></li>
+                        <li><a href="#" class="hover:text-white transition">Sustainability</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Liên Hệ -->
+                <div>
+                    <div class="flex items-center h-12 mb-4">
+                        <div class="bg-white rounded-full p-1 mr-2 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-[#0b162c]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h5 class="font-heading font-bold uppercase text-sm tracking-wide">LIÊN HỆ</h5>
+                    </div>
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li>Địa Chỉ: 11 Nguyễn Sơn,<br>Phường Phú Thạnh, Tp.HCM</li>
+                        <li>Điện Thoại: 028 3973 5599</li>
+                        <li>HOTLINE: 1900 77 99 26</li>
+                        <li>Fax: 028 3973 5959</li>
+                        <li>Email: lavo@lavo.com.vn</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 text-center text-gray-500 text-xs">
+                &copy; 2026 LAVO. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="animations.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+    function toggleMobileMenu() {
+        var menu = document.getElementById('mobile-menu');
+        var hamburger = document.getElementById('hamburger-icon');
+        var close = document.getElementById('close-icon');
+        menu.classList.toggle('hidden');
+        hamburger.classList.toggle('hidden');
+        close.classList.toggle('hidden');
+    }
+
+    var brandProductSwiper = new Swiper('.brandProductSwiper', {
+        slidesPerView: 2,
+        spaceBetween: 20,
+        loop: true,
+        navigation: {
+            nextEl: '.bp-swiper-next',
+            prevEl: '.bp-swiper-prev',
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 5,
+                spaceBetween: 30
+            }
+        }
+    });
+
+    var modelsSwiper = new Swiper('.modelsSwiper', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        loop: true,
+        navigation: {
+            nextEl: '.md-swiper-next',
+            prevEl: '.md-swiper-prev',
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 20
+            }
+        }
+    });
+    </script>
+</body>
+</html>
