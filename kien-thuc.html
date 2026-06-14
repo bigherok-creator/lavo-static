@@ -94,9 +94,9 @@
     </div>
 
     <!-- Hero Banner -->
-    <section class="relative bg-[#0b162c] text-white flex items-center min-h-[450px] overflow-hidden">
+    <section class="relative bg-[#0b162c] text-white flex items-center min-h-[500px] pt-12 md:pt-0">
         <!-- Glowing lines background effect placeholder -->
-        <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 z-0 overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-r from-[#0b162c] to-blue-900/40"></div>
             <!-- Streaks -->
             <div class="absolute top-1/4 -right-20 w-[120%] h-1 bg-blue-400/30 rotate-12 blur-sm"></div>
@@ -104,19 +104,17 @@
             <div class="absolute bottom-1/4 -left-20 w-[120%] h-1 bg-blue-400/30 -rotate-6 blur-sm"></div>
         </div>
 
-        <div class="container mx-auto px-8 relative z-10 flex flex-col md:flex-row items-center">
-            <div class="w-full md:w-1/2 mb-8 md:mb-0">
-                <h4 class="text-blue-300 font-heading font-semibold uppercase tracking-widest mb-2 text-sm md:text-base">KIẾN THỨC & ĐÀO TẠO</h4>
-                <h1 class="text-3xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 leading-tight uppercase italic">
+        <div class="container mx-auto px-8 relative z-10 flex flex-col md:flex-row items-center h-full">
+            <div class="w-full md:w-1/2 mb-8 md:mb-0 relative z-20">
+                <h4 class="text-[#0066FF] font-heading font-bold uppercase mb-2 text-sm md:text-lg">KIẾN THỨC & ĐÀO TẠO</h4>
+                <h1 class="text-4xl md:text-5xl lg:text-[52px] font-heading font-bold mb-4 leading-[1.1] uppercase italic text-white drop-shadow-lg">
                     NÂNG TẦM<br>KỸ NĂNG SALON<br>BẰNG NỀN TẢNG<br>KHOA HỌC
                 </h1>
             </div>
-            <div class="w-full md:w-1/2 flex justify-end">
-                <!-- Placeholder for the woman image -->
-                <div class="w-full max-w-md h-[350px] rounded-lg overflow-hidden flex items-end justify-center relative">
-                    <img src="hair1.png" alt="Hero Woman Placeholder" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-luminosity">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#0b162c] to-transparent"></div>
-                </div>
+            
+            <!-- Woman image -->
+            <div class="w-full md:w-1/2 md:absolute md:right-0 md:bottom-0 h-[350px] md:h-[650px] flex justify-end items-end z-10 pointer-events-none">
+                <img src="woman-hero.png" alt="Hero Woman" class="h-full w-auto max-w-none object-bottom md:object-right-bottom transform md:translate-x-12">
             </div>
         </div>
     </section>
@@ -125,28 +123,28 @@
     <section class="py-16 bg-white">
         <div class="container mx-auto px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1: Uốn -->
+                <!-- Card 1: Nhuộm -->
                 <div class="group cursor-pointer">
-                    <h3 class="text-sm font-heading font-light text-gray-500 uppercase tracking-widest mb-1">CÔNG NGHỆ</h3>
-                    <h2 class="text-2xl font-heading font-light text-[#1e3a8a] uppercase mb-4">UỐN</h2>
-                    <div class="aspect-square w-full bg-gray-100 rounded-lg overflow-hidden relative">
-                        <img src="hair2.png" alt="Uốn" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <h3 class="text-sm font-heading font-light text-[#0b162c] uppercase tracking-widest mb-1">CÔNG NGHỆ</h3>
+                    <h2 class="text-2xl md:text-3xl font-heading font-light text-[#0b162c] uppercase mb-4">NHUỘM</h2>
+                    <div class="aspect-square w-full bg-gradient-to-b from-white to-gray-100 rounded-lg overflow-hidden relative">
+                        <img src="congnghe1.png" alt="Công Nghệ Nhuộm 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     </div>
                 </div>
-                <!-- Card 2: Duỗi -->
+                <!-- Card 2: Nhuộm -->
                 <div class="group cursor-pointer">
-                    <h3 class="text-sm font-heading font-light text-gray-500 uppercase tracking-widest mb-1">CÔNG NGHỆ</h3>
-                    <h2 class="text-2xl font-heading font-light text-[#1e3a8a] uppercase mb-4">DUỖI</h2>
-                    <div class="aspect-square w-full bg-gray-100 rounded-lg overflow-hidden relative">
-                        <img src="hair3.png" alt="Duỗi" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <h3 class="text-sm font-heading font-light text-[#0b162c] uppercase tracking-widest mb-1">CÔNG NGHỆ</h3>
+                    <h2 class="text-2xl md:text-3xl font-heading font-light text-[#0b162c] uppercase mb-4">NHUỘM</h2>
+                    <div class="aspect-square w-full bg-gradient-to-b from-white to-gray-100 rounded-lg overflow-hidden relative">
+                        <img src="congnghe2.png" alt="Công Nghệ Nhuộm 2" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     </div>
                 </div>
                 <!-- Card 3: Phục Hồi -->
                 <div class="group cursor-pointer">
-                    <h3 class="text-sm font-heading font-light text-gray-500 uppercase tracking-widest mb-1">CÔNG NGHỆ</h3>
-                    <h2 class="text-2xl font-heading font-light text-[#1e3a8a] uppercase mb-4">PHỤC HỒI</h2>
-                    <div class="aspect-square w-full bg-gray-100 rounded-lg overflow-hidden relative">
-                        <img src="hair4.png" alt="Phục Hồi" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <h3 class="text-sm font-heading font-light text-[#0b162c] uppercase tracking-widest mb-1">CÔNG NGHỆ</h3>
+                    <h2 class="text-2xl md:text-3xl font-heading font-light text-[#0b162c] uppercase mb-4">PHỤC HỒI</h2>
+                    <div class="aspect-square w-full bg-gradient-to-b from-white to-gray-100 rounded-lg overflow-hidden relative">
+                        <img src="congnghe3.png" alt="Công Nghệ Phục Hồi" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     </div>
                 </div>
             </div>
