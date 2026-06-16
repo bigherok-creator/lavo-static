@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^index\.html$ https://lavo.177.jaysoft.dev/lavo-home/index.php [R=301,L]

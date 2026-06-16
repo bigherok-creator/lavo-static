@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAVO - Thương Hiệu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind-config.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .brand-carousel-container {
+            position: relative;
+            padding: 40px 0;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .swiper-slide-brand {
+            transition: all 0.3s ease;
+            transform: scale(0.8);
+            opacity: 0.6;
+        }
+        .swiper-slide-active.swiper-slide-brand {
+            transform: scale(1.1);
+            opacity: 1;
+            z-index: 10;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            background: white;
+        }
+        .bg-dark-blue { background-color: #0b162c; }
+        .text-dark-blue { color: #0b162c; }
+    </style>
+</head>
+<body class="text-gray-800 bg-[#F8FAFC]">
+
+    <!-- Header -->
+    <header class="bg-[#0b162c] text-white py-4 px-[6.25vw] flex justify-between items-center w-full sticky top-0 z-50">
+        <div class="flex items-center">
+            <a href="index.html">
+                <img src="cta-logo.png" alt="LAVO Logo" class="h-8 object-contain" style="filter: brightness(0) invert(1);">
+            </a>
+        </div>
+        <!-- Hamburger button (mobile) -->
+        <button id="hamburger-btn" class="md:hidden text-white focus:outline-none" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <svg id="hamburger-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide items-center">
+            <a href="#" class="hover:text-gray-300 transition">Công ty</a>
+            <a href="thuong-hieu.html" class="hover:text-gray-300 transition flex items-center">
+                <span class="bg-white text-[#0b162c] rounded-full w-4 h-4 flex items-center justify-center mr-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </span>
+                Thương hiệu
+            </a>
+            <a href="#" class="hover:text-gray-300 transition">Sản phẩm</a>
+            <a href="#" class="hover:text-gray-300 transition">Kiến thức</a>
+            <a href="#" class="hover:text-gray-300 transition">Hệ sinh thái</a>
+            <a href="index.html" class="hover:text-gray-300 transition">Landing Page</a>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden w-full bg-[#0b162c] text-white md:hidden fixed top-[56px] left-0 right-0 z-40 border-t border-white/10">
+        <nav class="flex flex-col px-6 py-4 space-y-1">
+            <a href="#" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Công ty</a>
+            <a href="thuong-hieu.html" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Thương hiệu</a>
+            <a href="#" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Sản phẩm</a>
+            <a href="#" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Kiến thức</a>
+            <a href="#" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Hệ sinh thái</a>
+            <a href="index.html" class="block py-3 px-2 text-sm font-medium hover:bg-white/10 rounded transition">Landing Page</a>
+        </nav>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="relative bg-gray-100 flex items-center min-h-[500px] overflow-hidden" style="background-image: url('hero-bg.png'); background-size: cover; background-position: center;">
+        <!-- Add a light overlay if background image is too noisy -->
+        <div class="absolute inset-0 bg-white/90"></div>
+        <div class="container mx-auto px-8 relative z-10 flex flex-col md:flex-row items-center">
+            <div class="w-full md:w-[55%] mb-8 md:mb-0 pt-10">
+                <h1 class="text-5xl md:text-7xl lg:text-[80px] font-heading font-bold mb-6 leading-tight uppercase">
+                    <span class="text-[#0b162c] block mb-2">YOUR STYLE</span>
+                    <span class="text-[#1e3a8a] block">OUR PRIDE</span>
+                </h1>
+                <p class="text-sm md:text-base font-heading font-bold text-gray-500 uppercase tracking-wide">PHONG CÁCH CỦA BẠN<br>LÀ NIỀM TỰ HÀO CỦA CHÚNG TÔI</p>
+            </div>
+            <div class="w-full md:w-[45%] flex justify-end relative h-[300px] md:h-[450px]">
+                <!-- Image removed for now -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Icons Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-8">
+            <div class="flex flex-wrap justify-center md:justify-between items-center max-w-4xl mx-auto gap-8 text-center text-[#1e3a8a]">
+                <!-- Item 1 -->
+                <div class="flex flex-col items-center">
+                    <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    <h3 class="text-2xl md:text-3xl font-bold font-heading">25+</h3>
+                    <p class="text-xs uppercase mt-1 tracking-wider">Năm kinh nghiệm</p>
+                </div>
+                <!-- Divider -->
+                <div class="hidden md:block w-px h-16 bg-gray-200"></div>
+                
+                <!-- Item 2 -->
+                <div class="flex flex-col items-center">
+                    <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                    <h3 class="text-2xl md:text-3xl font-bold font-heading">20+</h3>
+                    <p class="text-xs uppercase mt-1 tracking-wider">Thương hiệu</p>
+                </div>
+                <!-- Divider -->
+                <div class="hidden md:block w-px h-16 bg-gray-200"></div>
+
+                <!-- Item 3 -->
+                <div class="flex flex-col items-center">
+                    <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <h3 class="text-2xl md:text-3xl font-bold font-heading">2000+</h3>
+                    <p class="text-xs uppercase mt-1 tracking-wider">Sản phẩm</p>
+                </div>
+                <!-- Divider -->
+                <div class="hidden md:block w-px h-16 bg-gray-200"></div>
+
+                <!-- Item 4 -->
+                <div class="flex flex-col items-center">
+                    <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    <h3 class="text-2xl md:text-3xl font-bold font-heading">500+</h3>
+                    <p class="text-xs uppercase mt-1 tracking-wider">Salon Đối Tác</p>
+                </div>
+                <!-- Divider -->
+                <div class="hidden md:block w-px h-16 bg-gray-200"></div>
+
+                <!-- Item 5 -->
+                <div class="flex flex-col items-center">
+                    <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <h3 class="text-2xl md:text-3xl font-bold font-heading">200+</h3>
+                    <p class="text-xs uppercase mt-1 tracking-wider">Chuyên gia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Carousel Section -->
+    <section class="py-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-heading font-light text-[#1e3a8a] mb-2 uppercase">THƯƠNG HIỆU</h2>
+        <p class="text-gray-500 text-sm mb-10 max-w-2xl mx-auto px-4">Khám phá các thương hiệu nổi bật mang lại giải pháp làm đẹp hàng đầu cho mọi nhu cầu chăm sóc tóc.</p>
+        
+        <div class="brand-carousel-container">
+            <div class="swiper brandFocusSwiper overflow-visible">
+                <div class="swiper-wrapper flex items-center">
+                    <!-- Brand 1 -->
+                    <div class="swiper-slide swiper-slide-brand bg-white rounded-xl shadow-md border border-gray-100 flex flex-col items-center p-6 h-64 justify-center">
+                        <img src="product4.png" alt="Bostain" class="h-32 object-contain mb-4">
+                        <img src="logo4.png" alt="Bostain Logo" class="h-8 object-contain">
+                    </div>
+                    <!-- Brand 2 -->
+                    <div class="swiper-slide swiper-slide-brand bg-white rounded-xl shadow-md border border-gray-100 flex flex-col items-center p-6 h-64 justify-center">
+                        <img src="product2.png" alt="X-Pros" class="h-32 object-contain mb-4">
+                        <img src="logo2.png" alt="X-Pros Logo" class="h-8 object-contain">
+                    </div>
+                    <!-- Brand 3 (Center) -->
+                    <div class="swiper-slide swiper-slide-brand bg-white rounded-xl shadow-md border border-gray-100 flex flex-col items-center p-6 h-72 justify-center">
+                        <img src="product1.png" alt="Lavox" class="h-40 object-contain mb-6">
+                        <img src="logo1.png" alt="Lavox Logo" class="h-10 object-contain">
+                    </div>
+                    <!-- Brand 4 -->
+                    <div class="swiper-slide swiper-slide-brand bg-white rounded-xl shadow-md border border-gray-100 flex flex-col items-center p-6 h-64 justify-center">
+                        <img src="product3.png" alt="M-Pros" class="h-32 object-contain mb-4">
+                        <img src="logo3.png" alt="M-Pros Logo" class="h-8 object-contain">
+                    </div>
+                    <!-- Brand 5 -->
+                    <div class="swiper-slide swiper-slide-brand bg-white rounded-xl shadow-md border border-gray-100 flex flex-col items-center p-6 h-64 justify-center">
+                        <img src="product4.png" alt="Younwo" class="h-32 object-contain mb-4 opacity-50 grayscale">
+                        <h4 class="font-bold text-gray-800 tracking-widest">YOUNWO</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- Navigation -->
+            <button class="brand-prev absolute left-0 md:-left-12 z-20 w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#1e3a8a] shadow-md border border-gray-200" style="top:50%;transform:translateY(-50%)">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button class="brand-next absolute right-0 md:-right-12 z-20 w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#1e3a8a] shadow-md border border-gray-200" style="top:50%;transform:translateY(-50%)">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Product Tech Section -->
+    <section class="py-16 bg-white relative">
+        <div class="container mx-auto px-8 flex flex-col lg:flex-row items-center gap-12">
+            <div class="w-full lg:w-1/2 flex justify-center">
+                <!-- Using multiple product images to simulate the cluster -->
+                <div class="relative w-full max-w-lg h-[400px] flex items-end justify-center">
+                    <img src="product1.png" alt="Products" class="h-[90%] object-contain relative z-20">
+                    <img src="product2.png" alt="Products" class="h-[70%] object-contain absolute left-10 bottom-0 z-10">
+                    <img src="product3.png" alt="Products" class="h-[70%] object-contain absolute right-10 bottom-0 z-10">
+                    <div class="absolute bottom-0 left-10 right-10 h-8 bg-gray-200 rounded-full blur-xl -z-10"></div>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 text-center lg:text-left">
+                <h2 class="text-3xl md:text-5xl font-heading font-light text-[#1e3a8a] mb-6 uppercase leading-tight">DẪN ĐẦU CÔNG NGHỆ<br>UỐN - DUỖI - NHUỘM</h2>
+                <p class="text-gray-600 mb-8 max-w-md mx-auto lg:mx-0">Ứng dụng công nghệ hàng đầu với công thức độc quyền, mang lại sự bảo vệ tối đa cho mái tóc trước tác động của hóa chất.</p>
+                <button class="bg-[#0b162c] text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-900 transition shadow-md">Khám phá sản phẩm</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-20 relative bg-cover bg-center" style="background-image: url('hair1.png'); background-color: #0b162c;">
+        <div class="absolute inset-0 bg-[#0b162c]/80"></div>
+        <div class="container mx-auto px-8 relative z-10">
+            <div class="max-w-2xl text-white">
+                <h2 class="text-3xl md:text-5xl font-heading font-light mb-8 uppercase leading-tight">GIẢI PHÁP TOÀN DIỆN<br>CHO MÁI TÓC HOÀN HẢO</h2>
+                
+                <div class="flex gap-4 mb-10 overflow-x-auto pb-4">
+                    <div class="flex flex-col items-center shrink-0 w-20">
+                        <div class="w-12 h-12 border border-white/50 rounded flex items-center justify-center mb-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                        </div>
+                        <span class="text-xs uppercase text-center">Tóc khỏe</span>
+                    </div>
+                    <div class="flex flex-col items-center shrink-0 w-20">
+                        <div class="w-12 h-12 border border-white/50 rounded flex items-center justify-center mb-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <span class="text-xs uppercase text-center">Tóc gãy rụng</span>
+                    </div>
+                    <div class="flex flex-col items-center shrink-0 w-20">
+                        <div class="w-12 h-12 border border-white/50 rounded flex items-center justify-center mb-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                        </div>
+                        <span class="text-xs uppercase text-center">Tóc mỏng</span>
+                    </div>
+                    <div class="flex flex-col items-center shrink-0 w-20">
+                        <div class="w-12 h-12 border border-white/50 rounded flex items-center justify-center mb-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                        </div>
+                        <span class="text-xs uppercase text-center">Tóc hư tổn</span>
+                    </div>
+                </div>
+
+                <button class="bg-white text-[#0b162c] px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition shadow-md">Khám phá giải pháp</button>
+            </div>
+            
+            <!-- Glow effect on the right side -->
+            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full bg-gradient-to-l from-yellow-500/20 to-transparent pointer-events-none"></div>
+        </div>
+    </section>
+
+    <!-- Technical Video Section -->
+    <section class="py-16 bg-[#0b162c] text-white">
+        <div class="container mx-auto px-8 text-center">
+            <div class="flex items-center justify-center mb-8">
+                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                <h2 class="text-2xl md:text-3xl font-heading font-light uppercase">VIDEO KỸ THUẬT</h2>
+            </div>
+            
+            <div class="relative tech-video-swiper">
+                <!-- Swiper -->
+                <div class="swiper videoSwiper px-4">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><div class="relative group cursor-pointer aspect-[3/4] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1" style="background-image: url('video1.png');"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition"></div><div class="absolute inset-0 flex items-center justify-center"><div class="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-[#0b162c] group-hover:scale-110 transition backdrop-blur-sm"><svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div></div>
+                        <div class="swiper-slide"><div class="relative group cursor-pointer aspect-[3/4] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1" style="background-image: url('video2.png');"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition"></div><div class="absolute inset-0 flex items-center justify-center"><div class="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-[#0b162c] group-hover:scale-110 transition backdrop-blur-sm"><svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div></div>
+                        <div class="swiper-slide"><div class="relative group cursor-pointer aspect-[3/4] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1" style="background-image: url('video3.png');"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition"></div><div class="absolute inset-0 flex items-center justify-center"><div class="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-[#0b162c] group-hover:scale-110 transition backdrop-blur-sm"><svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div></div>
+                        <div class="swiper-slide"><div class="relative group cursor-pointer aspect-[3/4] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1" style="background-image: url('video4.png');"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition"></div><div class="absolute inset-0 flex items-center justify-center"><div class="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-[#0b162c] group-hover:scale-110 transition backdrop-blur-sm"><svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div></div>
+                        <div class="swiper-slide"><div class="relative group cursor-pointer aspect-[3/4] bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition transform hover:-translate-y-1" style="background-image: url('video5.png');"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition"></div><div class="absolute inset-0 flex items-center justify-center"><div class="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-[#0b162c] group-hover:scale-110 transition backdrop-blur-sm"><svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div></div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <button class="video-prev absolute left-0 md:-left-8 z-20 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/40 transition" style="top:50%;transform:translateY(-50%)">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button class="video-next absolute right-0 md:-right-8 z-20 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/40 transition" style="top:50%;transform:translateY(-50%)">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="py-12 bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto px-8 text-center">
+            <h2 class="text-xl md:text-2xl font-heading font-light text-[#1e3a8a] mb-8 uppercase">ĐỐI TÁC & SALON TIÊU BIỂU</h2>
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12 opacity-70">
+                <div class="w-24 h-24 bg-gray-300 flex items-center justify-center rounded">150px</div>
+                <div class="w-24 h-24 bg-gray-300 flex items-center justify-center rounded">150px</div>
+                <img src="logo2.png" alt="X-Pros" class="h-8 object-contain">
+                <img src="logo1.png" alt="Lavox" class="h-10 object-contain">
+                <img src="logo3.png" alt="M-Pros" class="h-8 object-contain">
+                <div class="w-24 h-24 bg-gray-300 flex items-center justify-center rounded">150px</div>
+                <div class="w-24 h-24 bg-gray-300 flex items-center justify-center rounded">150px</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0b162c] text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12">
+                <!-- Column 1: Logo & Info -->
+                <div class="col-span-1 flex flex-col items-start">
+                    <img src="cta-logo.png" alt="LAVO Logo" class="h-12 object-contain mb-4" style="filter: brightness(0) invert(1);">
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <p class="text-sm font-semibold mb-6 uppercase tracking-wider leading-relaxed">
+                        PLATFORM<br>MỸ PHẨM TÓC CHUYÊN NGHIỆP<br>HÀNG ĐẦU VIỆT NAM
+                    </p>
+                    <div class="flex space-x-4 items-center">
+                        <a href="#" class="bg-white text-[#0b162c] w-11 h-11 rounded-2xl flex items-center justify-center hover:bg-gray-200 transition overflow-hidden">
+                            <svg class="h-7 w-auto pr-1" fill="currentColor" viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+                        </a>
+                        <a href="#" class="bg-white text-[#0b162c] w-11 h-11 rounded-2xl flex items-center justify-center hover:bg-gray-200 transition">
+                            <svg class="h-6 w-auto" fill="currentColor" viewBox="0 0 448 512"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+                        </a>
+                        <a href="#" class="bg-white text-[#0b162c] w-11 h-11 rounded-2xl flex items-center justify-center hover:bg-gray-200 transition">
+                            <svg class="h-5 w-auto ml-1" fill="currentColor" viewBox="0 0 384 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Liên Kết Nhanh -->
+                <div>
+                    <div class="flex items-center h-12 mb-4">
+                        <div class="bg-white rounded-full p-1 mr-2 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-[#0b162c]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h5 class="font-heading font-bold uppercase text-sm tracking-wide">LIÊN KẾT NHANH</h5>
+                    </div>
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Về chúng tôi</a></li>
+                        <li><a href="#" class="hover:text-white transition">Sản phẩm</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tech Hub</a></li>
+                        <li><a href="#" class="hover:text-white transition">Academy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tìm Salon</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Dịch Vụ -->
+                <div>
+                    <div class="flex items-center h-12 mb-4">
+                        <div class="bg-white rounded-full p-1 mr-2 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-[#0b162c]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h5 class="font-heading font-bold uppercase text-sm tracking-wide">DỊCH VỤ</h5>
+                    </div>
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Giải pháp chuyên nghiệp</a></li>
+                        <li><a href="#" class="hover:text-white transition">Routine tóc</a></li>
+                        <li><a href="#" class="hover:text-white transition">Đào tạo</a></li>
+                        <li><a href="#" class="hover:text-white transition">Workshop</a></li>
+                        <li><a href="#" class="hover:text-white transition">Sustainability</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Liên Hệ -->
+                <div>
+                    <div class="flex items-center h-12 mb-4">
+                        <div class="bg-white rounded-full p-1 mr-2 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-[#0b162c]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h5 class="font-heading font-bold uppercase text-sm tracking-wide">LIÊN HỆ</h5>
+                    </div>
+                    <div class="w-full h-px bg-white/30 mb-4"></div>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li>Địa Chỉ: 11 Nguyễn Sơn,<br>Phường Phú Thạnh, Tp.HCM</li>
+                        <li>Điện Thoại: 028 3973 5599</li>
+                        <li>HOTLINE: 1900 77 99 26</li>
+                        <li>Fax: 028 3973 5959</li>
+                        <li>Email: lavo@lavo.com.vn</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 text-center text-gray-500 text-xs">
+                &copy; 2026 LAVO. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="animations.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+    function toggleMobileMenu() {
+        var menu = document.getElementById('mobile-menu');
+        var hamburger = document.getElementById('hamburger-icon');
+        var close = document.getElementById('close-icon');
+        menu.classList.toggle('hidden');
+        hamburger.classList.toggle('hidden');
+        close.classList.toggle('hidden');
+    }
+
+    var brandFocusSwiper = new Swiper('.brandFocusSwiper', {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        centeredSlides: true,
+        loop: true,
+        navigation: {
+            nextEl: '.brand-next',
+            prevEl: '.brand-prev',
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 5,
+                spaceBetween: 30
+            }
+        }
+    });
+
+    var videoSwiper = new Swiper('.videoSwiper', {
+        slidesPerView: 2,
+        spaceBetween: 16,
+        loop: true,
+        navigation: {
+            nextEl: '.video-next',
+            prevEl: '.video-prev',
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 24
+            }
+        }
+    });
+    </script>
+</body>
+</html>
